@@ -7,9 +7,9 @@
              x:Class="SAVAHHArent.MainPage">
 
     <StackLayout>
-        <Entry x:Name="loginEntry"></Entry>
-        <Entry IsPassword="True" x:Name="passwordEntry"></Entry>
-        <Button Text="Log in" x:Name="loginButton" Clicked="loginButton_Clicked"></Button>
+        <Entry x:Name="loginEntry" Margin="10,15,10,0"></Entry>
+        <Entry IsPassword="True" x:Name="passwordEntry" Margin="10,5,10,0"></Entry>
+        <Button Text="Log in" x:Name="loginButton" Clicked="loginButton_Clicked" BackgroundColor="LightPink" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="End"></Button>
     </StackLayout>
 
 </ContentPage>

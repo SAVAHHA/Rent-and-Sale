@@ -37,43 +37,73 @@ namespace SAVAHHArent
         {
             var login = loginEntry.Text;
             var password = passwordEntry.Text;
-            string myConnectionString = "Server=www.db4free.net;Port=3306;User Id=anaisanais;Password=anais321;Database=rentsale;OldGuids=True";
-            MySqlConnection connection = new MySqlConnection(myConnectionString);
-            connection.Open();
+           
+            try
+            {
+                string myConnectionString = "Server=www.db4free.net;Port=3306;User Id=anaisanais;Password=anais321;Database=rentsale;OldGuids=True";
+                MySqlConnection connection = new MySqlConnection(myConnectionString);
+                connection.Open();
+                MySqlCommand newCommand = new MySqlCommand("SELECT * FROM Users WHERE Login=@login", connection);
+                newCommand.Parameters.AddWithValue("@login", login);
+                MySqlDataReader mySqlDataReader = newCommand.ExecuteReader();
+                if (mySqlDataReader.HasRows)
+                {
+                    while (mySqlDataReader.Read()) 
+                    {
+                        object id = mySqlDataReader.GetValue(0);
+                        object loginGet = mySqlDataReader.GetValue(1);
+                        object passwordGet = mySqlDataReader.GetValue(2);
 
+                        if (password == passwordGet.ToString())
+                        {
+                            await Navigation.PushModalAsync(new Page());
+                        }
+                        else
+                        {
 
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await  DisplayAlert("No Internet connection", ex.InnerException?.Message, "ok");
+                //Console.WriteLine(ex.Message);
+                //Console.WriteLine(ex.InnerException?.Message);
+            }
+            
 
             //MySqlCommand newCommand = new MySqlCommand("INSERT INTO Users(Login,Password) VALUES(@login,@password)", connection);
 
-            MySqlCommand newCommand = new MySqlCommand("SELECT * FROM Users WHERE Login=@login", connection);
-            newCommand.Parameters.AddWithValue("@login", login);
-            //newCommand.Parameters.AddWithValue("@password", password);
-            //newCommand.ExecuteNonQuery();
-            MySqlDataReader mySqlDataReader = newCommand.ExecuteReader();
-            if (mySqlDataReader.HasRows) // если есть данные
-            {
-                // выводим названия столбцов
-                //Console.WriteLine("{0}\t{1}\t{2}", mySqlDataReader.GetName(0), mySqlDataReader.GetName(1), mySqlDataReader.GetName(2));
+            //MySqlCommand newCommand = new MySqlCommand("SELECT * FROM Users WHERE Login=@login", connection);
+            //newCommand.Parameters.AddWithValue("@login", login);
+            ////newCommand.Parameters.AddWithValue("@password", password);
+            ////newCommand.ExecuteNonQuery();
+            //MySqlDataReader mySqlDataReader = newCommand.ExecuteReader();
+            //if (mySqlDataReader.HasRows) // если есть данные
+            //{
+            //    // выводим названия столбцов
+            //    //Console.WriteLine("{0}\t{1}\t{2}", mySqlDataReader.GetName(0), mySqlDataReader.GetName(1), mySqlDataReader.GetName(2));
 
-                while (mySqlDataReader.Read()) // построчно считываем данные
-                {
-                    object id = mySqlDataReader.GetValue(0);
-                    object loginGet = mySqlDataReader.GetValue(1);
-                    object passwordGet = mySqlDataReader.GetValue(2);
+            //    while (mySqlDataReader.Read()) // построчно считываем данные
+            //    {
+            //        object id = mySqlDataReader.GetValue(0);
+            //        object loginGet = mySqlDataReader.GetValue(1);
+            //        object passwordGet = mySqlDataReader.GetValue(2);
 
-                    if (password == passwordGet.ToString())
-                    {
-                        await Navigation.PushModalAsync(new Page()); 
-                    }
-                }
-
-                
-            }
+            //        if (password == passwordGet.ToString())
+            //        {
+            //            await Navigation.PushModalAsync(new Page()); 
+            //        }
+            //    }
 
 
+            //}
 
-            //reader.Close();
-            connection.Close();
+
+
+            ////reader.Close();
+            //connection.Close();
         }
     }
 }
