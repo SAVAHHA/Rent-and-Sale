@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SAVAHHArent;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace SAVAHHArent
+namespace SAVAHHArent.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page : ContentPage
+    public partial class MainPage : ContentPage
     {
-        public Page()
+        public MainPage()
         {
             InitializeComponent();
         }

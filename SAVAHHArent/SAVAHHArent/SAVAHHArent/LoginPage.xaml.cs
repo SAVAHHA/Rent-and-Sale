@@ -8,13 +8,14 @@ using Xamarin.Forms;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 using System.Data;
+using SAVAHHArent.Pages;
 
 namespace SAVAHHArent
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    public partial class LoginPage : ContentPage
     {
         //public SqlConnection connection = new SqlConnection(@"Data Source=SAVAHHA\SQLEXPRESS;Initial Catalog=Rent_and_Sale;Integrated Security=True");
         MySqlConnectionStringBuilder mysqlCSB = new MySqlConnectionStringBuilder()
@@ -27,7 +28,7 @@ namespace SAVAHHArent
             CharacterSet = "utf-8" // Кодировка Базы Данных
         };
 
-        public MainPage()
+        public LoginPage()
         {
             InitializeComponent();
             
@@ -51,25 +52,31 @@ namespace SAVAHHArent
                     while (mySqlDataReader.Read()) 
                     {
                         object id = mySqlDataReader.GetValue(0);
-                        object loginGet = mySqlDataReader.GetValue(1);
-                        object passwordGet = mySqlDataReader.GetValue(2);
+                        object loginGet = mySqlDataReader.GetValue(2);
+                        object passwordGet = mySqlDataReader.GetValue(3);
 
                         if (password == passwordGet.ToString())
                         {
-                            await Navigation.PushModalAsync(new Page());
+                            await Navigation.PushModalAsync(new MainPage());
                         }
                         else
                         {
-
+                            await DisplayAlert("Rejected", "Incorrect password", "OK");
+                            passwordEntry.Text = "";
                         }
                     }
                 }
+                else
+                {
+                    await DisplayAlert("Rejected", "No user with such login", "OK");
+                    loginEntry.Text = "";
+                    passwordEntry.Text = "";
+                }
+                connection.Close();
             }
             catch (Exception ex)
             {
                 await  DisplayAlert("No Internet connection", ex.InnerException?.Message, "ok");
-                //Console.WriteLine(ex.Message);
-                //Console.WriteLine(ex.InnerException?.Message);
             }
             
 
@@ -104,6 +111,11 @@ namespace SAVAHHArent
 
             ////reader.Close();
             //connection.Close();
+        }
+
+        private async void registrationButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new RegistrationPage());
         }
     }
 }

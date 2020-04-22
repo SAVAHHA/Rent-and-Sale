@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SAVAHHArent.Pages.RegistrationPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Name" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="0" Grid.Row="1"></Label>
+                <Label Text="Login" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="0" Grid.Row="2"></Label>
+                <Label Text="Password" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="0" Grid.Row="3"></Label>
+                <Label Text="Confirm password" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="0" Grid.Row="4"></Label>
+
+                <Entry x:Name="NameEntry" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="150" Grid.Column="1" Grid.Row="1"></Entry>
+                <Entry x:Name="LoginEntry" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="150" Grid.Column="1" Grid.Row="2"></Entry>
+                <Entry IsPassword="True" x:Name="PasswordEntry" VerticalOptions="Center" WidthRequest="150" HorizontalOptions="Center" Grid.Column="1" Grid.Row="3"></Entry>
+                <Entry IsPassword="True" x:Name="ConfirmPasswordEntry" VerticalOptions="Center" WidthRequest="150" HorizontalOptions="Center" Grid.Column="1" Grid.Row="4"></Entry>
+
+                <Button Text="Cancel" Margin="10" x:Name="CancelButton" BackgroundColor="LightPink" Grid.Column="0" Grid.Row="5" Clicked="CancelButton_Clicked"></Button>
+                <Button Text="Registr" Margin="10" x:Name="RegistrationButton" BackgroundColor="LightPink" Grid.Column="1" Grid.Row="5" Clicked="RegistrationButton_Clicked"></Button>
+                
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
