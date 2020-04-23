@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell       xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:SAVAHHArent.Pages"
+             xmlns:views="clr-namespace:SAVAHHArent.Pages"
+             mc:Ignorable="d"
+             x:Class="SAVAHHArent.ShellPage">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle"
+               TargetType="Element">
+                <Setter Property="Shell.BackgroundColor"
+                    Value="#455A64" />
+                <Setter Property="Shell.ForegroundColor"
+                    Value="White" />
+                <Setter Property="Shell.TitleColor"
+                    Value="White" />
+                <Setter Property="Shell.DisabledColor"
+                    Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor"
+                    Value="#95FFFFFF" />
+            </Style>
+            <Style TargetType="ShellItem"
+               BasedOn="{StaticResource BaseStyle}" />
+            <Style x:Key="SavahhaShell"
+               TargetType="Element"
+               BasedOn="{StaticResource BaseStyle}">
+                <Setter Property="Shell.BackgroundColor"
+                    Value="#5d5e62" />
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <TabBar>
+        <Tab Title="Rent" Style="{StaticResource SavahhaShell}" Icon="ic_action_time_to_leave">
+            <ShellContent Title="Rent" Route="ShellRent" ContentTemplate="{DataTemplate pages:RentPage}">
+
+                </ShellContent>
+        </Tab>
+
+        <Tab Title="Buy" Style="{StaticResource SavahhaShell}" Icon="ic_action_monetization_on">
+            <ShellContent Title="Rent" Route="ShellRent" ContentTemplate="{DataTemplate pages:SalePage}">
+
+            </ShellContent>
+        </Tab>
+
+        <Tab Title="Profile" Style="{StaticResource SavahhaShell}" Icon="ic_action_person">
+            <ShellContent Title="Rent" Route="ShellRent" ContentTemplate="{DataTemplate pages:RegistrationPage}">
+
+            </ShellContent>
+        </Tab>
+    </TabBar>
+
+   
+</Shell>

@@ -52,12 +52,15 @@ namespace SAVAHHArent
                     while (mySqlDataReader.Read()) 
                     {
                         object id = mySqlDataReader.GetValue(0);
+                        object name = mySqlDataReader.GetValue(1);
                         object loginGet = mySqlDataReader.GetValue(2);
                         object passwordGet = mySqlDataReader.GetValue(3);
 
                         if (password == passwordGet.ToString())
                         {
-                            await Navigation.PushModalAsync(new MainPage());
+                            //await Navigation.PushModalAsync(new MainPage(Int32.Parse(id.ToString()), name.ToString()));
+                            //await Navigation.PushModalAsync(new TabbedMainPage());
+                       
                         }
                         else
                         {

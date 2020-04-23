@@ -10,7 +10,7 @@ namespace SAVAHHArent
         {
             InitializeComponent();
 
-            MainPage = new LoginPage();
+            MainPage = new ShellPage();
         }
 
         protected override void OnStart()

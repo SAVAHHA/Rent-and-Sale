@@ -3,26 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SAVAHHArent;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace SAVAHHArent.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : ContentPage
+    public partial class RentPage : ContentPage
     {
-        public string UserName;
-        public int UserAge;
-
-
-        public MainPage(int Age, string Name)
+        public RentPage()
         {
             InitializeComponent();
-            UserAge = Age;
-            UserName = Name;
-
-            WelcomeLabel.Text = "Welcome, " + UserName + "!";
         }
     }
 }
