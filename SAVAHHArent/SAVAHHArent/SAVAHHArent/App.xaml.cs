@@ -13,6 +13,8 @@ namespace SAVAHHArent
             MainPage = new ShellPage();
         }
 
+      
+
         protected override void OnStart()
         {
         }
