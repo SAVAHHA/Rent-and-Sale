@@ -6,6 +6,7 @@ namespace SAVAHHArent.Model
 {
     public class Car
     {
+        public int ID_Car { get; set; }
         public string CarMake { get; set; }
         public string Model { get; set; }
         public int Year { get; set; }
