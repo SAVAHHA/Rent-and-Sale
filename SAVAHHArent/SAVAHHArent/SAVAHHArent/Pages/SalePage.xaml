@@ -4,12 +4,40 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:views="clr-namespace:SAVAHHArent.VIews"
+             xmlns:controls="clr-namespace:SAVAHHArent.Controls"
+             xmlns:data="clr-namespace:SAVAHHArent.Data"
              x:Class="SAVAHHArent.Pages.SalePage">
-    <ContentPage.Content>
-        <StackLayout BackgroundColor="#b0c3c9">
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" 
+                                        Value="#039BE6" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    
+    <Shell.SearchHandler>
+        <controls:CarsSearchHandler Placeholder="Enter search term"
+                                    ShowsResults="True"
+                                    ItemTemplate="{StaticResource }"
+                                    Cars="{x:Static data:CarData.Cars}"
+                                    SelectedItemNavigationTarget="{x:Type views:SaleDetailPage}"></controls:CarsSearchHandler>
+    </Shell.SearchHandler>
+    
+    <CollectionView Margin="20"
+                    ItemsSource="{x:Static data:CarData.Cars}"
+                    SelectionMode="Single"
+                    SelectionChanged="CollectionView_SelectionChanged"></CollectionView>
+
 </ContentPage>

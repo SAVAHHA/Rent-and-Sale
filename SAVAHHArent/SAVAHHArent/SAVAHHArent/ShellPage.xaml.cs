@@ -16,12 +16,23 @@ namespace SAVAHHArent
     public partial class ShellPage : Shell
     {
         public int HasEntered = 0;
+        Dictionary<string, Type> routes = new Dictionary<string, Type>();
+
+        public Dictionary<string, Type> Routes { get { return routes; } }
 
         public ShellPage()
         {
             //Welcome();
             InitializeComponent();
+            RegisterRoutes();
             //Serialize<int>("DataFile.json", HasEntered);
+        }
+
+        void RegisterRoutes()
+        {
+            routes.Add("rentPage", typeof(RentPage));
+            routes.Add("salePage", typeof(SalePage));
+            routes.Add("registrationPage", typeof(RegistrationPage));
         }
 
         private T Deserialize<T>(string fileName)

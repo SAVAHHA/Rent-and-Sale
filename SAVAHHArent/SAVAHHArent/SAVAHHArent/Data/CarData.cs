@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using MySql.Data.MySqlClient;
 using SAVAHHArent.Model;
+using MySql.Data.MySqlClient;
 
-namespace SAVAHHArent.Model
+namespace SAVAHHArent.Data
 {
-    public class Cars
+    public static class CarData
     {
-        public List<Car> CarsData;
-
-        public Cars()
+        public static IList<Car> Cars { get; private set; }
+        static CarData()
         {
+            Cars = new List<Car>();
+
             string myConnectionString = "Server=www.db4free.net;Port=3306;User Id=anaisanais;Password=anais321;Database=rentsale;OldGuids=True";
             MySqlConnection connection = new MySqlConnection(myConnectionString);
             connection.Open();
@@ -35,7 +36,7 @@ namespace SAVAHHArent.Model
 
 
                     var car = new Car { ID_Car = Int32.Parse(_carID.ToString()), CarMake = _carMake.ToString(), Model = _model.ToString(), Year = Int32.Parse(_year.ToString()), Colour = _colour.ToString(), NumberOfSeats = Int32.Parse(_numberOfSeats.ToString()), Horsepower = Int32.Parse(_horsepower.ToString()), Cost = Int32.Parse(_cost.ToString()), GovNumber = _govNumber.ToString(), CostPerDay = Int32.Parse(_costPerDay.ToString()), Rent = Int32.Parse(_rent.ToString()) };
-                    CarsData.Add(car);
+                    Cars.Add(car);
                 }
             }
         }

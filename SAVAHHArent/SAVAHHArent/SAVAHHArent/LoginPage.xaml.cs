@@ -17,17 +17,6 @@ namespace SAVAHHArent
     [DesignTimeVisible(false)]
     public partial class LoginPage : ContentPage
     {
-        //public SqlConnection connection = new SqlConnection(@"Data Source=SAVAHHA\SQLEXPRESS;Initial Catalog=Rent_and_Sale;Integrated Security=True");
-        MySqlConnectionStringBuilder mysqlCSB = new MySqlConnectionStringBuilder()
-        {
-            Server = "db4free.net",
-            Port = 3306,
-            Database = "rentsale",    // Имя БД
-            UserID = "anaisanais",       // Имя пользователя БД
-            Password = "anais321",   // Пароль пользователя БД
-            CharacterSet = "utf-8" // Кодировка Базы Данных
-        };
-
         public LoginPage()
         {
             InitializeComponent();
