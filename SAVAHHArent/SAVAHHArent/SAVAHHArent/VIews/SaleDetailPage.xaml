@@ -5,11 +5,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="SAVAHHArent.VIews.SaleDetailPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <ScrollView>
+        <StackLayout Margin="20">
+            <Label Text="{Binding Model}" 
+                   HorizontalOptions="Center" 
+                    />
+            <Label Text="{Binding CarMake}" 
+                   FontAttributes="Italic" 
+                   HorizontalOptions="Center" />
+          
+            <Label Text="{Binding Cost}" 
+                    />
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

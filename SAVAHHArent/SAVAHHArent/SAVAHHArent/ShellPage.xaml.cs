@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using Newtonsoft.Json;
 using System.IO;
 using SAVAHHArent.Data;
+using SAVAHHArent.VIews;
 
 namespace SAVAHHArent
 {
@@ -32,7 +33,13 @@ namespace SAVAHHArent
         {
             routes.Add("rentPage", typeof(RentPage));
             routes.Add("salePage", typeof(SalePage));
+            routes.Add("saledetails", typeof(SaleDetailPage));
             routes.Add("registrationPage", typeof(RegistrationPage));
+
+            foreach (var item in routes)
+            {
+                Routing.RegisterRoute(item.Key, item.Value);
+            }
         }
 
         private T Deserialize<T>(string fileName)

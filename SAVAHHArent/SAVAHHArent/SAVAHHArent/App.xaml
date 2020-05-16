@@ -6,6 +6,36 @@
              mc:Ignorable="d"
              x:Class="SAVAHHArent.App">
     <Application.Resources>
+        <DataTemplate x:Key="CarTemplate">
+            <Grid Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
+                <Label Grid.Row="0"
+                       Text="{Binding Model}"
+                       FontAttributes="Bold"></Label>
+
+                <Label Grid.Row="1"
+                       Text="{Binding CarMake}"></Label>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CarSearchTemplate">
+            <Grid Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.15*" />
+                    <ColumnDefinition Width="0.85*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="1" 
+                       Text="{Binding Model}" 
+                       FontAttributes="Bold" />
+            </Grid>
+        </DataTemplate>
     </Application.Resources>
 </Application>
