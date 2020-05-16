@@ -20,7 +20,8 @@ namespace SAVAHHArent.Pages
 
         private async void CancelButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new LoginPage());
+            //await Navigation.PushModalAsync(new LoginPage());
+            await Shell.Current.GoToAsync("loginPage");
         }
 
         private async void RegistrationButton_Clicked(object sender, EventArgs e)

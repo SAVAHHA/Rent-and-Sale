@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 using System.Data;
 using SAVAHHArent.Pages;
 
-namespace SAVAHHArent
+namespace SAVAHHArent.Pages
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
@@ -23,7 +23,7 @@ namespace SAVAHHArent
             
         }
 
-        private async void loginButton_Clicked(object sender, EventArgs e)
+        private async void LoginButton_Clicked(object sender, EventArgs e)
         {
             var login = loginEntry.Text;
             var password = passwordEntry.Text;
@@ -49,6 +49,7 @@ namespace SAVAHHArent
                         {
                             //await Navigation.PushModalAsync(new MainPage(Int32.Parse(id.ToString()), name.ToString()));
                             //await Navigation.PushModalAsync(new TabbedMainPage());
+                            await Shell.Current.GoToAsync("profilePage");
                        
                         }
                         else
@@ -70,44 +71,22 @@ namespace SAVAHHArent
             {
                 await  DisplayAlert("No Internet connection", ex.InnerException?.Message, "ok");
             }
-            
-
-            //MySqlCommand newCommand = new MySqlCommand("INSERT INTO Users(Login,Password) VALUES(@login,@password)", connection);
-
-            //MySqlCommand newCommand = new MySqlCommand("SELECT * FROM Users WHERE Login=@login", connection);
-            //newCommand.Parameters.AddWithValue("@login", login);
-            ////newCommand.Parameters.AddWithValue("@password", password);
-            ////newCommand.ExecuteNonQuery();
-            //MySqlDataReader mySqlDataReader = newCommand.ExecuteReader();
-            //if (mySqlDataReader.HasRows) // если есть данные
-            //{
-            //    // выводим названия столбцов
-            //    //Console.WriteLine("{0}\t{1}\t{2}", mySqlDataReader.GetName(0), mySqlDataReader.GetName(1), mySqlDataReader.GetName(2));
-
-            //    while (mySqlDataReader.Read()) // построчно считываем данные
-            //    {
-            //        object id = mySqlDataReader.GetValue(0);
-            //        object loginGet = mySqlDataReader.GetValue(1);
-            //        object passwordGet = mySqlDataReader.GetValue(2);
-
-            //        if (password == passwordGet.ToString())
-            //        {
-            //            await Navigation.PushModalAsync(new Page()); 
-            //        }
-            //    }
-
-
-            //}
-
-
-
-            ////reader.Close();
-            //connection.Close();
         }
 
         private async void registrationButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new RegistrationPage());
+            await Shell.Current.GoToAsync("registrationPage");
+        }
+
+        private void loginEntry_Focused(object sender, FocusEventArgs e)
+        {
+            loginEntry.Text = "";
+        }
+
+        private void passwordEntry_Focused(object sender, FocusEventArgs e)
+        {
+            passwordEntry.Text = "";
+            passwordEntry.IsPassword = true;
         }
     }
 }
