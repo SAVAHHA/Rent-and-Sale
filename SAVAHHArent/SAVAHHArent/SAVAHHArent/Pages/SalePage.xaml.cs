@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 
 namespace SAVAHHArent.Pages
 {
-    //[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SalePage : ContentPage
     {
         public SalePage()

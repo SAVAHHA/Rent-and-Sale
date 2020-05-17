@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:pages="clr-namespace:SAVAHHArent.Pages"
+             xmlns:pages="clr-namespace:SAVAHHArent2.Pages"
              xmlns:views="clr-namespace:SAVAHHArent.Pages"
              mc:Ignorable="d"
-             x:Class="SAVAHHArent.ShellPage">
+             x:Class="SAVAHHArent2.ShellPage">
 
     <Shell.Resources>
         <ResourceDictionary>
@@ -36,23 +36,23 @@
 
     <TabBar>
         <Tab Title="Rent" Style="{StaticResource SavahhaShell}" Icon="ic_action_time_to_leave">
-            <ShellContent Title="Rent" ContentTemplate="{DataTemplate pages:RentPage}">
+            <ShellContent Title="Rent" Route="ShellRent" ContentTemplate="{DataTemplate pages:RentPage}">
 
-                </ShellContent>
+            </ShellContent>
         </Tab>
 
         <Tab Title="Buy" Style="{StaticResource SavahhaShell}" Icon="ic_action_monetization_on">
-            <ShellContent Title="Rent" ContentTemplate="{DataTemplate pages:SalePage}">
+            <ShellContent Title="Rent" Route="ShellRent" ContentTemplate="{DataTemplate pages:SalePage}">
 
             </ShellContent>
         </Tab>
 
         <Tab Title="Profile" Style="{StaticResource SavahhaShell}" Icon="ic_action_person">
-            <ShellContent Title="Rent" ContentTemplate="{DataTemplate pages:LoginPage}">
+            <ShellContent Title="Rent" Route="ShellRent" ContentTemplate="{DataTemplate pages:LoginPage}">
 
             </ShellContent>
         </Tab>
     </TabBar>
 
-   
+
 </Shell>

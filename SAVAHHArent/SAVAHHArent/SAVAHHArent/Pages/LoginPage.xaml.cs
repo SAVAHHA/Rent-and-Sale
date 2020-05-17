@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
+//using System.Data.SqlClient;
 using System.Data;
 using SAVAHHArent.Pages;
 
@@ -27,7 +28,7 @@ namespace SAVAHHArent.Pages
         {
             var login = loginEntry.Text;
             var password = passwordEntry.Text;
-           
+
             try
             {
                 string myConnectionString = "Server=www.db4free.net;Port=3306;User Id=anaisanais;Password=anais321;Database=rentsale;OldGuids=True";
@@ -38,7 +39,7 @@ namespace SAVAHHArent.Pages
                 MySqlDataReader mySqlDataReader = newCommand.ExecuteReader();
                 if (mySqlDataReader.HasRows)
                 {
-                    while (mySqlDataReader.Read()) 
+                    while (mySqlDataReader.Read())
                     {
                         object id = mySqlDataReader.GetValue(0);
                         object name = mySqlDataReader.GetValue(1);
@@ -50,7 +51,7 @@ namespace SAVAHHArent.Pages
                             //await Navigation.PushModalAsync(new MainPage(Int32.Parse(id.ToString()), name.ToString()));
                             //await Navigation.PushModalAsync(new TabbedMainPage());
                             await Shell.Current.GoToAsync("profilePage");
-                       
+
                         }
                         else
                         {
@@ -69,11 +70,51 @@ namespace SAVAHHArent.Pages
             }
             catch (Exception ex)
             {
-                await  DisplayAlert("No Internet connection", ex.InnerException?.Message, "ok");
+                await DisplayAlert("No Internet connection", ex.InnerException?.Message, "ok");
             }
-        }
 
-        private async void registrationButton_Clicked(object sender, EventArgs e)
+
+
+            //    string connectionString = "Data Source=192.168.1.74,49170;Initial Catalog=Rent_and_Sale;Integrated Security=True";
+            //    SqlConnection sqlConnection = new SqlConnection(connectionString);
+            //    sqlConnection.Open();
+            //    SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Users WHERE Login=@login", sqlConnection);
+            //    sqlCommand.Parameters.AddWithValue("@login", login);
+            //    SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            //    if (sqlDataReader.HasRows)
+            //    {
+            //        while (sqlDataReader.Read())
+            //        {
+            //            object id = sqlDataReader.GetValue(0);
+            //            object name = sqlDataReader.GetValue(1);
+            //            object passwordGet = sqlDataReader.GetValue(4);
+
+            //            if (password == passwordGet.ToString())
+            //            {
+            //                //await Navigation.PushModalAsync(new MainPage(Int32.Parse(id.ToString()), name.ToString()));
+            //                //await Navigation.PushModalAsync(new TabbedMainPage());
+            //                await Shell.Current.GoToAsync("profilePage");
+
+            //            }
+            //            else
+            //            {
+            //                await DisplayAlert("Rejected", "Incorrect password", "OK");
+            //                passwordEntry.Text = "";
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        await DisplayAlert("Rejected", "No user with such login", "OK");
+            //        loginEntry.Text = "";
+            //        passwordEntry.Text = "";
+            //    }
+            //    sqlConnection.Close();
+         }       
+
+
+
+            private async void registrationButton_Clicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("registrationPage");
         }

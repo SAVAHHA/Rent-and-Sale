@@ -4,12 +4,23 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:views="clr-namespace:SAVAHHArent.VIews"
+             xmlns:controls="clr-namespace:SAVAHHArent.Controls"
+             xmlns:data="clr-namespace:SAVAHHArent.Data"
              x:Class="SAVAHHArent.Pages.RentPage">
-    <ContentPage.Content>
-        <StackLayout BackgroundColor="#b0c3c9">
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    
+    
+    <Shell.SearchHandler>
+        <controls:CarsSearchHandler Placeholder="Enter search term"
+                                    ShowsResults="True"
+                                    ItemTemplate="{StaticResource CarSearchTemplate}"
+                                    Cars="{x:Static data:CarData.CarsForRent}"
+                                    SelectedItemNavigationTarget="{x:Type views:SaleDetailPage}"></controls:CarsSearchHandler>
+    </Shell.SearchHandler>
+
+    <CollectionView Margin="20"
+                    ItemsSource="{x:Static data:CarData.CarsForRent}"
+                    ItemTemplate="{StaticResource CarTemplate}"
+                    SelectionMode="Single"
+                    SelectionChanged="CollectionView_SelectionChanged"></CollectionView>
 </ContentPage>

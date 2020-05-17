@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Text;
 using Xamarin.Forms;
-using SAVAHHArent.Model;
+using SAVAHHArent2.Model;
 
-namespace SAVAHHArent.Controls
+namespace SAVAHHArent2.Controls
 {
-    public class CarsSearchHandler: SearchHandler
+    public class CarsSearchHandler : SearchHandler
     {
         public IList<Car> Cars { get; set; }
         public Type SelectedItemNavigationTarget { get; set; }
@@ -30,19 +30,19 @@ namespace SAVAHHArent.Controls
             }
         }
 
-        protected override async void OnItemSelected (object item)
+        protected override async void OnItemSelected(object item)
         {
             base.OnItemSelected(item);
             await Task.Delay(1000);
 
             ShellNavigationState state = (App.Current.MainPage as Shell).CurrentState;
-            //await Shell.Current.GoToAsync($"{GetNavigationTarget()}?model={((Car)item).Model}");
-            await Shell.Current.GoToAsync($"saledetails?carmodel={((Car)item).Model}");
+            await Shell.Current.GoToAsync($"{GetNavigationTarget()}?model={((Car)item).Model}");
         }
 
-        //string GetNavigationTarget()
-        //{
-        //    return (Shell.Current as ShellPage).Routes.FirstOrDefault(route => route.Value.Equals(SelectedItemNavigationTarget)).Key;
-        //}
+        string GetNavigationTarget()
+        {
+            return (Shell.Current as ShellPage).Routes.FirstOrDefault(route => route.Value.Equals(SelectedItemNavigationTarget)).Key;
+        }
     }
 }
+
