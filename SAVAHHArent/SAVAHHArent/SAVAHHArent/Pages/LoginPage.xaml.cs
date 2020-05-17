@@ -32,6 +32,7 @@ namespace SAVAHHArent.Pages
         {
             var login = loginEntry.Text;
             var password = passwordEntry.Text;
+            bool check = true;
 
             foreach (var user in UserData.Users)
             {
@@ -46,13 +47,14 @@ namespace SAVAHHArent.Pages
                         await DisplayAlert("Rejected", "Incorrect password", "OK");
                         passwordEntry.Text = "";
                     }
+                    check = false;
                 }
-                else
-                {
-                    await DisplayAlert("Rejected", "No user with such login", "OK");
-                    loginEntry.Text = "";
-                    passwordEntry.Text = "";
-                }
+            }
+            if (check == true)
+            {
+                await DisplayAlert("Rejected", "No user with such login", "OK");
+                loginEntry.Text = "";
+                passwordEntry.Text = "";
             }
 
             //try

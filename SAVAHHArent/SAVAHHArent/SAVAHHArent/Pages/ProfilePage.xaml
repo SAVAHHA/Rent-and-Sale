@@ -5,18 +5,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="SAVAHHArent.Pages.ProfilePage">
-    
-    
+
+
     <ScrollView>
-        <StackLayout Margin="20">
+        <StackLayout Margin="20" x:Name="mainStackLayout">
             <Label Text="{Binding Name}" 
+                   FontSize="Medium"
                    HorizontalOptions="Center" 
                     />
-            <Label Text="{Binding Phone}" 
-                   FontAttributes="Italic" 
-                   HorizontalOptions="Center" />
+            <Label x:Name="idLabel" Text="{Binding ID_User}" HorizontalOptions="Center"></Label>
+            <Entry x:Name="loginEntry" Margin="15,0,15,0" Text="{Binding Login}" IsEnabled="False" TextColor="Black"></Entry>
+            <Entry x:Name="passwordEntry" Margin="15,10,15,0" Text="{Binding Password}" IsEnabled="False"></Entry>
 
-            
+            <Button x:Name="EditButton" Text="Edit" Clicked="EditButton_Clicked" Margin="20" BackgroundColor="LightPink"></Button>
         </StackLayout>
     </ScrollView>
 </ContentPage>
