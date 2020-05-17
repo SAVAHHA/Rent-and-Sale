@@ -10,6 +10,8 @@ using MySql.Data.MySqlClient;
 //using System.Data.SqlClient;
 using System.Data;
 using SAVAHHArent.Pages;
+using SAVAHHArent.Model;
+using SAVAHHArent.Data;
 
 namespace SAVAHHArent.Pages
 {
@@ -18,6 +20,8 @@ namespace SAVAHHArent.Pages
     [DesignTimeVisible(false)]
     public partial class LoginPage : ContentPage
     {
+        
+
         public LoginPage()
         {
             InitializeComponent();
@@ -29,35 +33,18 @@ namespace SAVAHHArent.Pages
             var login = loginEntry.Text;
             var password = passwordEntry.Text;
 
-            try
+            foreach (var user in UserData.Users)
             {
-                string myConnectionString = "Server=www.db4free.net;Port=3306;User Id=anaisanais;Password=anais321;Database=rentsale;OldGuids=True";
-                MySqlConnection connection = new MySqlConnection(myConnectionString);
-                connection.Open();
-                MySqlCommand newCommand = new MySqlCommand("SELECT * FROM Users WHERE Login=@login", connection);
-                newCommand.Parameters.AddWithValue("@login", login);
-                MySqlDataReader mySqlDataReader = newCommand.ExecuteReader();
-                if (mySqlDataReader.HasRows)
+                if (user.Login == login)
                 {
-                    while (mySqlDataReader.Read())
+                    if (user.Password == password)
                     {
-                        object id = mySqlDataReader.GetValue(0);
-                        object name = mySqlDataReader.GetValue(1);
-                        object loginGet = mySqlDataReader.GetValue(2);
-                        object passwordGet = mySqlDataReader.GetValue(3);
-
-                        if (password == passwordGet.ToString())
-                        {
-                            //await Navigation.PushModalAsync(new MainPage(Int32.Parse(id.ToString()), name.ToString()));
-                            //await Navigation.PushModalAsync(new TabbedMainPage());
-                            await Shell.Current.GoToAsync("profilePage");
-
-                        }
-                        else
-                        {
-                            await DisplayAlert("Rejected", "Incorrect password", "OK");
-                            passwordEntry.Text = "";
-                        }
+                        await Shell.Current.GoToAsync($"profilePage?userlogin={login}");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Rejected", "Incorrect password", "OK");
+                        passwordEntry.Text = "";
                     }
                 }
                 else
@@ -66,12 +53,52 @@ namespace SAVAHHArent.Pages
                     loginEntry.Text = "";
                     passwordEntry.Text = "";
                 }
-                connection.Close();
             }
-            catch (Exception ex)
-            {
-                await DisplayAlert("No Internet connection", ex.InnerException?.Message, "ok");
-            }
+
+            //try
+            //{
+            //    string myConnectionString = "Server=www.db4free.net;Port=3306;User Id=anaisanais;Password=anais321;Database=rentsale;OldGuids=True";
+            //    MySqlConnection connection = new MySqlConnection(myConnectionString);
+            //    connection.Open();
+            //    MySqlCommand newCommand = new MySqlCommand("SELECT * FROM Users WHERE Login=@login", connection);
+            //    newCommand.Parameters.AddWithValue("@login", login);
+            //    MySqlDataReader mySqlDataReader = newCommand.ExecuteReader();
+            //    if (mySqlDataReader.HasRows)
+            //    {
+            //        while (mySqlDataReader.Read())
+            //        {
+            //            object id = mySqlDataReader.GetValue(0);
+            //            ID = Int32.Parse(id.ToString());
+            //            object name = mySqlDataReader.GetValue(1);
+            //            object loginGet = mySqlDataReader.GetValue(2);
+            //            object passwordGet = mySqlDataReader.GetValue(3);
+
+            //            if (password == passwordGet.ToString())
+            //            {
+            //                //await Navigation.PushModalAsync(new MainPage(Int32.Parse(id.ToString()), name.ToString()));
+            //                //await Navigation.PushModalAsync(new TabbedMainPage());
+            //                await Shell.Current.GoToAsync("profilePage");
+
+            //            }
+            //            else
+            //            {
+            //                await DisplayAlert("Rejected", "Incorrect password", "OK");
+            //                passwordEntry.Text = "";
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        await DisplayAlert("Rejected", "No user with such login", "OK");
+            //        loginEntry.Text = "";
+            //        passwordEntry.Text = "";
+            //    }
+            //    connection.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    await DisplayAlert("No Internet connection", ex.InnerException?.Message, "ok");
+            //}
 
 
 
@@ -114,7 +141,7 @@ namespace SAVAHHArent.Pages
 
 
 
-            private async void registrationButton_Clicked(object sender, EventArgs e)
+        private async void registrationButton_Clicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("registrationPage");
         }
@@ -129,5 +156,7 @@ namespace SAVAHHArent.Pages
             passwordEntry.Text = "";
             passwordEntry.IsPassword = true;
         }
+
+        
     }
 }
