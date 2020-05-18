@@ -11,15 +11,15 @@ using Xamarin.Forms.Xaml;
 namespace SAVAHHArent.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [QueryProperty("UserLogin", "userlogin")]
+    [QueryProperty("UserID", "userid")]
     public partial class ProfilePage : ContentPage
     {
 
-        public string UserLogin
+        public string UserID
         {
             set
             {
-                BindingContext = UserData.Users.FirstOrDefault(m => m.Login == Uri.UnescapeDataString(value));
+                BindingContext = UserData.Users.FirstOrDefault(m => m.ID_User == Uri.UnescapeDataString(value));
             }
         }
 
@@ -44,17 +44,8 @@ namespace SAVAHHArent.Pages
             await DisplayAlert("", longs.Count().ToString(), "ok");
         }
 
-        private async void EditButton_Clicked(object sender, EventArgs e)
+        private void EditButton_Clicked(object sender, EventArgs e)
         {
-            var userTable = new UserTable { Id = 1, Login = "savahha", Password = "1111", Name = "Anna" };
-            //var userTable = (UserTable)BindingContext;
-            if (userTable.Login != null)
-            {
-                //App.Database.SaveItemAsync(userTable);
-                await App.Database.SaveUserAsync(userTable);
-                Alert();
-                R();
-            }
 
             string _login = loginEntry.Text;
             loginEntry.IsEnabled = true;
@@ -79,24 +70,24 @@ namespace SAVAHHArent.Pages
                     _user.Password = _password;
 
 
-
-                    try
-                    {
-                        string myConnectionString = "Server=www.db4free.net;Port=3306;User Id=anaisanais;Password=anais321;Database=rentsale;OldGuids=True";
-                        MySqlConnection connection = new MySqlConnection(myConnectionString);
-                        connection.Open();
-                        MySqlCommand newCommand = new MySqlCommand("UPDATE Users SET Login=@login, Password=@password WHERE ID_User=@id ", connection);
-                        newCommand.Parameters.AddWithValue("@login", _login);
-                        newCommand.Parameters.AddWithValue("@password", _password);
-                        newCommand.Parameters.AddWithValue("@id", idLabel.Text);
-                        newCommand.ExecuteNonQuery();
+                    await App.Database.UpdateAsync(new UserTable { Id = App.ID, Login = _login, Password = _password });
+                    //try
+                    //{
+                    //    string myConnectionString = "Server=www.db4free.net;Port=3306;User Id=anaisanais;Password=anais321;Database=rentsale;OldGuids=True";
+                    //    MySqlConnection connection = new MySqlConnection(myConnectionString);
+                    //    connection.Open();
+                    //    MySqlCommand newCommand = new MySqlCommand("UPDATE Users SET Login=@login, Password=@password WHERE ID_User=@id ", connection);
+                    //    newCommand.Parameters.AddWithValue("@login", _login);
+                    //    newCommand.Parameters.AddWithValue("@password", _password);
+                    //    newCommand.Parameters.AddWithValue("@id", idLabel.Text);
+                    //    newCommand.ExecuteNonQuery();
                         
-                        connection.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        await DisplayAlert("No Internet connection", ex.InnerException?.Message, "ok");
-                    }
+                    //    connection.Close();
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    await DisplayAlert("No Internet connection", ex.InnerException?.Message, "ok");
+                    //}
 
                 }
             }
@@ -112,6 +103,11 @@ namespace SAVAHHArent.Pages
             EditButton.IsEnabled = true;
             mainStackLayout.Children.Remove(button);
             
+        }
+
+        private void LogOutButton_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

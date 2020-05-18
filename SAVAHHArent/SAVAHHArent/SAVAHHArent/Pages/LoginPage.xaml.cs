@@ -40,7 +40,10 @@ namespace SAVAHHArent.Pages
                 {
                     if (user.Password == password)
                     {
-                        await Shell.Current.GoToAsync($"profilePage?userlogin={login}");
+                        var _user = new UserTable { Id_inHost = 1, Login = login, Name = "Anna", Password = password };
+                        await App.Database.SaveUserAsync(_user);
+
+                        await Shell.Current.GoToAsync($"profilePage?userid={"1"}");
                     }
                     else
                     {

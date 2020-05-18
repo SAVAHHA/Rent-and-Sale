@@ -22,7 +22,7 @@ namespace SAVAHHArent.Pages
             string carModel = (e.CurrentSelection.FirstOrDefault() as Car).Model;
             // This works because route names are unique in this application.
             //await DisplayAlert("", carModel, "ok");
-            await Shell.Current.GoToAsync($"saledetails?carmodel={carModel}");
+            await Shell.Current.GoToAsync($"rentdetails?carmodel={carModel}");
         }
     }
 }

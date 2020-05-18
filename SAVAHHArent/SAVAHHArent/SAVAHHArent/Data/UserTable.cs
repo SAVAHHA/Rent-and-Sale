@@ -10,7 +10,7 @@ namespace SAVAHHArent.Data
     {
         [PrimaryKey, AutoIncrement, Column("_id")]
         public int Id { get; set; }
-
+        public int Id_inHost { get; set; }
         public string Name { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }

@@ -18,6 +18,8 @@
             <Entry x:Name="passwordEntry" Margin="15,10,15,0" Text="{Binding Password}" IsEnabled="False"></Entry>
 
             <Button x:Name="EditButton" Text="Edit" Clicked="EditButton_Clicked" Margin="20" BackgroundColor="LightPink"></Button>
+
+            <Button x:Name="LogOutButton" Text="Log out" Margin="20" VerticalOptions="End" BackgroundColor="RosyBrown" Clicked="LogOutButton_Clicked"></Button>
         </StackLayout>
     </ScrollView>
 </ContentPage>

@@ -10,15 +10,15 @@ namespace SAVAHHArent
     public partial class App : Application
     {
 
-        public const string DATABASE_NAME = "users.db";
-        static UserRepository database;
-        public static UserRepository Database
+        public const string DATABASE_NAME = "table.db";
+        static Table database;
+        public static Table Database
         {
             get
             {
                 if (database == null)
                 {
-                    database = new UserRepository(
+                    database = new Table(
                         Path.Combine(
                             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DATABASE_NAME));
                 }
@@ -32,7 +32,8 @@ namespace SAVAHHArent
             {
                 if (App.Database.GetUsersAsync().Result.Count != 0)
                 {
-                    return 1;
+                    var users = App.Database.GetUsersAsync().Result;
+                    return users[0].Id;
                 }
                 else
                 {
@@ -45,7 +46,7 @@ namespace SAVAHHArent
         {
             get
             {
-                if (App.ID == 1)
+                if (App.ID != 0)
                 {
                     var users = App.Database.GetUsersAsync().Result;
                     return users[0].Login;
@@ -86,7 +87,8 @@ namespace SAVAHHArent
 
         public async void D()
         {
-            await App.Database.DeleteAll();
+            await App.Database.SaveUserAsync(new UserTable { Id_inHost = 1, Login = "savahha", Name = "Anna", Password = "1111" });
+            //await App.Database.DeleteAll();
         }
 
         protected override void OnStart()

@@ -36,7 +36,7 @@ namespace SAVAHHArent
             {
                 var profilePage = new ProfilePage();
                 profileTab.Content = profilePage;
-                profilePage.UserLogin = App.Login;
+                profilePage.UserID = "1";
             }
         }
 
@@ -45,6 +45,7 @@ namespace SAVAHHArent
             routes.Add("rentPage", typeof(RentPage));
             routes.Add("salePage", typeof(SalePage));
             routes.Add("saledetails", typeof(SaleDetailPage));
+            routes.Add("rentdetails", typeof(RentDetailPage));
             routes.Add("registrationPage", typeof(RegistrationPage));
             routes.Add("loginPage", typeof(LoginPage));
             routes.Add("profilePage", typeof(ProfilePage));
@@ -57,9 +58,9 @@ namespace SAVAHHArent
 
         public async void Welcome()
         {
-            var users = App.Database.GetUsersAsync().Result.Count;
+            var users = App.Database.GetUsersAsync().Result;
 
-            await DisplayAlert(App.ID.ToString(), users.ToString(), "ok");
+            await DisplayAlert(App.ID.ToString(), users.Count.ToString(), "ok");
         }
     }
 }

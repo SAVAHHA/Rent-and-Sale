@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Text;
 using SQLite;
-using SAVAHHArent.Model;
 
 namespace SAVAHHArent.Data
 {
-    public class UserRepository
+    public class Table
     {
         readonly SQLiteAsyncConnection database;
-        public UserRepository(string databasePath)
+        public Table(string databasePath)
         {
             database = new SQLiteAsyncConnection(databasePath);
             database.CreateTableAsync<UserTable>().Wait();
@@ -44,6 +43,5 @@ namespace SAVAHHArent.Data
         {
             return database.UpdateAsync(user);
         }
-
     }
 }
