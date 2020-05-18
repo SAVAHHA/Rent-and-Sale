@@ -1,19 +1,93 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SAVAHHArent.Data;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace SAVAHHArent
 {
     public partial class App : Application
     {
+
+        public const string DATABASE_NAME = "users.db";
+        static UserRepository database;
+        public static UserRepository Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new UserRepository(
+                        Path.Combine(
+                            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DATABASE_NAME));
+                }
+                return database;
+            }
+        }
+
+        public static int ID
+        {
+            get
+            {
+                if (App.Database.GetUsersAsync().Result.Count != 0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public static string Login
+        {
+            get
+            {
+                if (App.ID == 1)
+                {
+                    var users = App.Database.GetUsersAsync().Result;
+                    return users[0].Login;
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
+
         public App()
         {
             InitializeComponent();
-
+            //D();
+            //int _check = Check().Result;
+            //App.Database.SaveItem(new UserTable { Id = 1, Login = "savahha", Name = "Anna", Password = "1111" });
             MainPage = new ShellPage();
         }
 
       
+        public async Task<int> Check()
+        {
+            int check;
+            var users = await App.Database.GetUsersAsync();
+            if (users.Count != 0)
+            {
+                check = 1;
+            }
+            else
+            {
+                check = 0;
+            }
+            return check;
+            //await App.Database.DeleteAll();
+        }
+
+        public async void D()
+        {
+            await App.Database.DeleteAll();
+        }
 
         protected override void OnStart()
         {

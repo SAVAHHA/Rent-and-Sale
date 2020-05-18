@@ -9,7 +9,7 @@
 
     <ScrollView>
         <StackLayout Margin="20" x:Name="mainStackLayout">
-            <Label Text="{Binding Name}" 
+            <Label x:Name="nameLabel" Text="{Binding Name}" 
                    FontSize="Medium"
                    HorizontalOptions="Center" 
                     />

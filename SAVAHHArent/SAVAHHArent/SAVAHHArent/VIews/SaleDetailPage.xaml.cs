@@ -25,5 +25,24 @@ namespace SAVAHHArent.VIews
         {
             InitializeComponent();
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        protected override void OnAppearing()
+        {
+            R();
+
+            //userNameLabel.Text = App.Database.GetItem(1).Name;
+            base.OnAppearing();
+        }
+
+        public async void R()
+        {
+            var longs = await App.Database.GetUsersAsync();
+            await DisplayAlert("", longs.Count().ToString(), "ok");
+        }
     }
 }

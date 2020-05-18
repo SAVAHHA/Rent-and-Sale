@@ -14,7 +14,7 @@ namespace SAVAHHArent.Pages
     [QueryProperty("UserLogin", "userlogin")]
     public partial class ProfilePage : ContentPage
     {
-        
+
         public string UserLogin
         {
             set
@@ -26,21 +26,47 @@ namespace SAVAHHArent.Pages
         public ProfilePage()
         {
             InitializeComponent();
+
+            
+
+            //Alert();
+            
         }
 
-        private void EditButton_Clicked(object sender, EventArgs e)
+        public async void Alert()
         {
+            await DisplayAlert("", "added", "yeah");
+        }
+
+        public async void R()
+        {
+            var longs = await App.Database.GetUsersAsync();
+            await DisplayAlert("", longs.Count().ToString(), "ok");
+        }
+
+        private async void EditButton_Clicked(object sender, EventArgs e)
+        {
+            var userTable = new UserTable { Id = 1, Login = "savahha", Password = "1111", Name = "Anna" };
+            //var userTable = (UserTable)BindingContext;
+            if (userTable.Login != null)
+            {
+                //App.Database.SaveItemAsync(userTable);
+                await App.Database.SaveUserAsync(userTable);
+                Alert();
+                R();
+            }
+
             string _login = loginEntry.Text;
             loginEntry.IsEnabled = true;
             passwordEntry.IsEnabled = true;
 
             Button _button = new Button { Text = "Save", Margin = 15, BackgroundColor = Color.LightPink };
             mainStackLayout.Children.Add(_button);
-            _button.Clicked += OnButtonClicked;
+            _button.Clicked += SaveButtonClicked;
             EditButton.IsEnabled = false;
         }
 
-        private async void OnButtonClicked(object sender, EventArgs e)
+        private async void SaveButtonClicked(object sender, EventArgs e)
         {
             string _login = loginEntry.Text;
             string _password = passwordEntry.Text;
@@ -74,6 +100,8 @@ namespace SAVAHHArent.Pages
 
                 }
             }
+
+            //App.Database.SaveItem(new UserTable { Id = 1, Login = loginEntry.Text, Password = passwordEntry.Text, Name = nameLabel.Text });
 
             Button button = (Button)sender;
             button.Text = "Saved!";

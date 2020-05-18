@@ -4,18 +4,29 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:pages="clr-namespace:SAVAHHArent.Pages"
              x:Class="SAVAHHArent.VIews.SaleDetailPage">
     <ScrollView>
-        <StackLayout Margin="20">
-            <Label Text="{Binding Model}" 
-                   HorizontalOptions="Center" 
-                    />
-            <Label Text="{Binding CarMake}" 
-                   FontAttributes="Italic" 
-                   HorizontalOptions="Center" />
-          
-            <Label Text="{Binding Cost}" 
-                    />
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="10,20,10,0" Spacing="0">
+                <Label Text="{Binding CarMake}" FontSize="Medium" TextColor="Black"></Label>
+                <Label Text=" " FontSize="Medium" TextColor="Black"></Label>
+                <Label Text="{Binding Model}" FontSize="Medium" TextColor="Black"></Label>
+                <Label Text=", " FontSize="Medium" TextColor="Black"></Label>
+                <Label Text="{Binding Year}" FontSize="Medium" TextColor="Black"></Label>
+            </StackLayout>
+
+            <Label Text="{Binding Cost}" FontAttributes="Bold" TextColor="Black" FontSize="Large" Margin="10"></Label>
+
+            <Image Source="{Binding Photo}" Aspect="AspectFill"></Image>
+
+            <Label x:Name="userNameLabel"></Label>
+
+            <Button Text="Buy" Margin="20" BackgroundColor="LightPink" Clicked="Button_Clicked"></Button>
         </StackLayout>
+        
+        
+        
+        
     </ScrollView>
 </ContentPage>

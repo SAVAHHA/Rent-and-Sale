@@ -40,8 +40,8 @@ namespace SAVAHHArent.Data
             //        var car = new Car { ID_Car = Int32.Parse(_carID.ToString()), CarMake = _carMake.ToString(), Model = _model.ToString(), Year = Int32.Parse(_year.ToString()), Colour = _colour.ToString(), NumberOfSeats = Int32.Parse(_numberOfSeats.ToString()), Horsepower = Int32.Parse(_horsepower.ToString()), Cost = Int32.Parse(_cost.ToString()), GovNumber = _govNumber.ToString(), CostPerDay = Int32.Parse(_costPerDay.ToString()), Rent = Int32.Parse(_rent.ToString()) };
             //        Cars.Add(car);
 
-            Cars.Add(new Car { Model = "Land Cruiser", ID_Car = 1, CarMake = "Toyota", Colour = "White", Cost = 3000000, CostPerDay = 2000, GovNumber = "aa111a", Horsepower = 288, NumberOfSeats = 5, Rent = 1, Year = 2018 });
-            Cars.Add(new Car { ID_Car = 2, CarMake = "Toyota", Colour = "Black", Cost = 2000000, CostPerDay = 0, GovNumber = "", Horsepower = 178, Model = "Camry", NumberOfSeats = 9, Rent = 0, Year = 2107 });
+            Cars.Add(new Car { Model = "Land Cruiser", ID_Car = 1, CarMake = "Toyota", Colour = "White", Cost = 3000000, CostPerDay = 2000, GovNumber = "aa111a", Horsepower = 288, NumberOfSeats = 5, Rent = 1, Year = 2018, Photo = new Uri("https://speedme.ru/uploads/gallery/575/iogbjaqg4rcy3fulaxnu.jpg") });
+            Cars.Add(new Car { ID_Car = 2, CarMake = "Toyota", Colour = "Black", Cost = 2000000, CostPerDay = 0, GovNumber = "", Horsepower = 178, Model = "Camry", NumberOfSeats = 9, Rent = 0, Year = 2017, Photo = new Uri("https://avatars.mds.yandex.net/get-pdb/222681/b910f481-49fe-433e-bdf8-c8411e579782/s1200?webp=false") });
             //}
             //}
 

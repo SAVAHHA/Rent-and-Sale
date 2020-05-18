@@ -16,17 +16,28 @@ namespace SAVAHHArent
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ShellPage : Shell
     {
-        public int HasEntered = 0;
+        public int Check;
         Dictionary<string, Type> routes = new Dictionary<string, Type>();
 
         public Dictionary<string, Type> Routes { get { return routes; } }
 
         public ShellPage()
         {
-            //Welcome();
+            
             InitializeComponent();
             RegisterRoutes();
-            //Serialize<int>("DataFile.json", HasEntered);
+            Welcome();
+            //profileTab.Content = new LoginPage();
+            if (App.ID == 0)
+            {
+                profileTab.Content = new LoginPage();
+            }
+            else
+            {
+                var profilePage = new ProfilePage();
+                profileTab.Content = profilePage;
+                profilePage.UserLogin = App.Login;
+            }
         }
 
         void RegisterRoutes()
@@ -44,33 +55,11 @@ namespace SAVAHHArent
             }
         }
 
-        private T Deserialize<T>(string fileName)
+        public async void Welcome()
         {
-            using (var sr = new StreamReader(fileName))
-            {
-                using (var jsonReader = new JsonTextReader(sr))
-                {
-                    var serializer = new JsonSerializer();
-                    return serializer.Deserialize<T>(jsonReader);
-                }
-            }
-        }
+            var users = App.Database.GetUsersAsync().Result.Count;
 
-        private void Serialize<T>(string fileName, T data)
-        {
-            using (var sw = new StreamWriter(fileName))
-            {
-                using (var jsonWriter = new JsonTextWriter(sw))
-                {
-                    var serializer = new JsonSerializer();
-                    serializer.Serialize(jsonWriter, data);
-                }
-            }
+            await DisplayAlert(App.ID.ToString(), users.ToString(), "ok");
         }
-
-        //public async void Welcome()
-        //{
-        //    await Navigation.PushModalAsync(new LoginPage());
-        //}
     }
 }

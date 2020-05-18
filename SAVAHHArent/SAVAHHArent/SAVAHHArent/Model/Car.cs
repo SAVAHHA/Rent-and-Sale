@@ -17,5 +17,6 @@ namespace SAVAHHArent.Model
         public string GovNumber { get; set; }
         public int Rent { get; set; }
         public int CostPerDay { get; set; }
+        public Uri Photo { get; set; }
     }
 }

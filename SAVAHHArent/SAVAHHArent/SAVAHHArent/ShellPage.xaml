@@ -48,7 +48,7 @@
         </Tab>
 
         <Tab Title="Profile" Style="{StaticResource SavahhaShell}" Icon="ic_action_person">
-            <ShellContent Title="Rent" ContentTemplate="{DataTemplate pages:LoginPage}">
+            <ShellContent x:Name="profileTab" Title="Rent" >
 
             </ShellContent>
         </Tab>
