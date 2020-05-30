@@ -42,6 +42,38 @@ namespace SAVAHHArent
             }
         }
 
+        public static int ID_inHost
+        {
+            get
+            {
+                if (App.ID != 0)
+                {
+                    var users = App.Database.GetUsersAsync().Result;
+                    return users[0].Id_inHost;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public static string Name
+        {
+            get
+            {
+                if (App.ID != 0)
+                {
+                    var users = App.Database.GetUsersAsync().Result;
+                    return users[0].Name;
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
+
         public static string Login
         {
             get
@@ -58,6 +90,21 @@ namespace SAVAHHArent
             }
         }
 
+        public static string Password
+        {
+            get
+            {
+                if (App.ID != 0)
+                {
+                    var users = App.Database.GetUsersAsync().Result;
+                    return users[0].Password;
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
 
         public App()
         {

@@ -36,7 +36,7 @@ namespace SAVAHHArent
             {
                 var profilePage = new ProfilePage();
                 profileTab.Content = profilePage;
-                profilePage.UserID = "1";
+                //profilePage.UserID = "1";
             }
         }
 
