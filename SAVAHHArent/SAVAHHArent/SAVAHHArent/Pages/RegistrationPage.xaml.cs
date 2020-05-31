@@ -35,30 +35,31 @@ namespace SAVAHHArent.Pages
             {
                 try
                 {
-                    string myConnectionString = "Server=www.db4free.net;Port=3306;User Id=anaisanais;Password=anais321;Database=rentsale;OldGuids=True";
+                    string myConnectionString = "Server=127.0.0.1;User Id=savahha;Password=1111;Database=rentandsale;Connection Timeout=200";
                     MySqlConnection connection = new MySqlConnection(myConnectionString);
                     connection.Open();
-                    MySqlCommand checkCommand = new MySqlCommand("SELECT * FROM Users WHERE Login=@login", connection);
-                    checkCommand.Parameters.AddWithValue("@login", UserLogin);
-                    MySqlDataReader mySqlDataReaderCheck = checkCommand.ExecuteReader();
-                    await DisplayAlert("COOL", "", "OK");
-                    if (mySqlDataReaderCheck.HasRows)
-                    {
-                        await DisplayAlert("Attention", "User with such login already exists", "OK");
-                        LoginEntry.Text = "";
-                    }
-                    else
-                    {
+                    //MySqlCommand checkCommand = new MySqlCommand("SELECT * FROM Users WHERE Login=@login", connection);
+                    //checkCommand.Parameters.AddWithValue("@login", UserLogin);
+                    //MySqlDataReader mySqlDataReaderCheck = checkCommand.ExecuteReader();
+                    //await DisplayAlert("COOL", "", "OK");
+                    //if (mySqlDataReaderCheck.HasRows)
+                    //{
+                    //    await DisplayAlert("Attention", "User with such login already exists", "OK");
+                    //    LoginEntry.Text = "";
+                    //}
+                    //else
+                    //{
                         MySqlCommand newCommand = new MySqlCommand("INSERT INTO Users(Name_user,Login,Password) VALUES(@name,@login,@password)", connection);
                         newCommand.Parameters.AddWithValue("@login", UserLogin);
                         newCommand.Parameters.AddWithValue("@name", UserName);
                         newCommand.Parameters.AddWithValue("@password", UserPassword);
                         newCommand.ExecuteNonQuery();
-
-                        await Navigation.PushModalAsync(new LoginPage());
-                    }
-
+                    await DisplayAlert("COOL", "", "OK");
                     connection.Close();
+                    await Navigation.PushModalAsync(new LoginPage());
+                    //}
+
+                    //connection.Close();
                 }
                 catch (Exception ex)
                 {

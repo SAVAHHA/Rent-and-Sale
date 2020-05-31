@@ -15,7 +15,8 @@ namespace SAVAHHArent.Data
         {
             Cars = new List<Car>();
 
-            string myConnectionString = "Server=www.db4free.net;Port=3306;User Id=anaisanais;Password=anais321;Database=rentsale;OldGuids=True; Connection Timeout=200";
+           // string myConnectionString = "Server=www.db4free.net;Port=3306;User Id=anaisanais;Password=anais321;Database=rentsale;OldGuids=True;Connection Timeout=200";
+            string myConnectionString = "Server=192.168.31.145;Port=3306;User Id=savahha;Password=1111;Database=rentandsale;OldGuids=True;Connection Timeout=200";
             MySqlConnection connection = new MySqlConnection(myConnectionString);
             connection.Open();
             MySqlCommand newCommand = new MySqlCommand("SELECT * FROM Cars", connection);
