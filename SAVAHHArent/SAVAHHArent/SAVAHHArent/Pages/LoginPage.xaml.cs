@@ -59,52 +59,90 @@ namespace SAVAHHArent.Pages
             //    passwordEntry.Text = "";
             //}
 
-            try
+            string myConnectionString = "Server=192.168.31.145;Port=3306;User Id=savahha;Password=1111;Database=rentandsale;OldGuids=True;Connection Timeout=200";
+            MySqlConnection connection = new MySqlConnection(myConnectionString);
+            connection.Open();
+            MySqlCommand newCommand = new MySqlCommand("SELECT * FROM users WHERE Login=@login", connection);
+            newCommand.Parameters.AddWithValue("@login", login);
+            MySqlDataReader mySqlDataReader = newCommand.ExecuteReader();
+            await DisplayAlert("", "COOl", "OK");
+            if (mySqlDataReader.HasRows)
             {
-                // string myConnectionString = "Server=www.db4free.net;Port=3306;User Id=anaisanais;Password=anais321;Database=rentsale;OldGuids=True;Connection Timeout=200";
-                string myConnectionString = "Server=192.168.31.145;Port=3306;User Id=savahha;Password=1111;Database=rentandsale;OldGuids=True;Connection Timeout=200";
-                MySqlConnection connection = new MySqlConnection(myConnectionString);
-                //connection.ConnectionTimeout = 200;
-                connection.Open();
-                MySqlCommand newCommand = new MySqlCommand("SELECT * FROM Users WHERE Login=@login", connection);
-                newCommand.Parameters.AddWithValue("@login", login);
-                MySqlDataReader mySqlDataReader = newCommand.ExecuteReader();
-                if (mySqlDataReader.HasRows)
+                while (mySqlDataReader.Read())
                 {
-                    while (mySqlDataReader.Read())
+                    object _id = mySqlDataReader.GetValue(0);
+                    object _name = mySqlDataReader.GetValue(1);
+                    object _loginGet = mySqlDataReader.GetValue(2);
+                    object _passwordGet = mySqlDataReader.GetValue(3);
+
+                    if (password == _passwordGet.ToString())
                     {
-                        object _id = mySqlDataReader.GetValue(0);
-                        object _name = mySqlDataReader.GetValue(1);
-                        object _loginGet = mySqlDataReader.GetValue(2);
-                        object _passwordGet = mySqlDataReader.GetValue(3);
+                        var _user = new UserTable { Id_inHost = Int32.Parse(_id.ToString()), Login = _loginGet.ToString(), Name = _name.ToString(), Password = _passwordGet.ToString() };
+                        await App.Database.SaveUserAsync(_user);
+                        //await Shell.Current.GoToAsync($"profilePage?userid={"1"}");
+                        await Shell.Current.GoToAsync("profilePage");
 
-                        if (password == _passwordGet.ToString())
-                        {
-                            var _user = new UserTable { Id_inHost = Int32.Parse(_id.ToString()), Login = _loginGet.ToString(), Name = _name.ToString(), Password = _passwordGet.ToString() };
-                            await App.Database.SaveUserAsync(_user);
-                            //await Shell.Current.GoToAsync($"profilePage?userid={"1"}");
-                            await Shell.Current.GoToAsync("profilePage");
-
-                        }
-                        else
-                        {
-                            await DisplayAlert("Rejected", "Incorrect password", "OK");
-                            passwordEntry.Text = "";
-                        }
+                    }
+                    else
+                    {
+                        await DisplayAlert("Rejected", "Incorrect password", "OK");
+                        passwordEntry.Text = "";
                     }
                 }
-                else
-                {
-                    await DisplayAlert("Rejected", "No user with such login", "OK");
-                    loginEntry.Text = "";
-                    passwordEntry.Text = "";
-                }
-                connection.Close();
             }
-            catch (Exception ex)
+            else
             {
-                await DisplayAlert("No Internet connection", ex.InnerException?.Message, "ok");
+                await DisplayAlert("Rejected", "No user with such login", "OK");
+                loginEntry.Text = "";
+                passwordEntry.Text = "";
             }
+            connection.Close();
+
+            //try
+            //{
+            //    // string myConnectionString = "Server=www.db4free.net;Port=3306;User Id=anaisanais;Password=anais321;Database=rentsale;OldGuids=True;Connection Timeout=200";
+            //    string myConnectionString = "Server=192.168.31.145;Port=3306;User Id=savahha;Password=1111;Database=rentandsale;OldGuids=True;Connection Timeout=200";
+            //    MySqlConnection connection = new MySqlConnection(myConnectionString);
+            //    MySqlCommand newCommand = new MySqlCommand("SELECT * FROM users WHERE Login=@login", connection);
+            //    newCommand.Parameters.AddWithValue("@login", login);
+            //    MySqlDataReader mySqlDataReader = newCommand.ExecuteReader();
+            //    await DisplayAlert("", "COOl", "OK");
+            //    if (mySqlDataReader.HasRows)
+            //    {
+            //        while (mySqlDataReader.Read())
+            //        {
+            //            object _id = mySqlDataReader.GetValue(0);
+            //            object _name = mySqlDataReader.GetValue(1);
+            //            object _loginGet = mySqlDataReader.GetValue(2);
+            //            object _passwordGet = mySqlDataReader.GetValue(3);
+
+            //            if (password == _passwordGet.ToString())
+            //            {
+            //                var _user = new UserTable { Id_inHost = Int32.Parse(_id.ToString()), Login = _loginGet.ToString(), Name = _name.ToString(), Password = _passwordGet.ToString() };
+            //                await App.Database.SaveUserAsync(_user);
+            //                //await Shell.Current.GoToAsync($"profilePage?userid={"1"}");
+            //                await Shell.Current.GoToAsync("profilePage");
+
+            //            }
+            //            else
+            //            {
+            //                await DisplayAlert("Rejected", "Incorrect password", "OK");
+            //                passwordEntry.Text = "";
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        await DisplayAlert("Rejected", "No user with such login", "OK");
+            //        loginEntry.Text = "";
+            //        passwordEntry.Text = "";
+            //    }
+            //    connection.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    await DisplayAlert("No Internet connection", ex.InnerException?.Message, "ok");
+            //}
         }       
 
         private async void registrationButton_Clicked(object sender, EventArgs e)
