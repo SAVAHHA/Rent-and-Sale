@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:SAVAHHArent"
+             x:Class="SAVAHHArent.VIews.ConfirmSalePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Buyer: "></Label>
+                <Label Text="{x:Static local:App.Name}"></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Car: "></Label>
+                <Label Text="{Binding Model}"></Label>
+                <Label Text=" "></Label>
+                <Label Text="{Binding ID_Car}"></Label>
+                <Label Text=" "></Label>
+                <Label Text="{Binding Cost}" x:Name="CostLabel"></Label>
+            </StackLayout>
+
+            <Button Text="Confirm" x:Name="ConfirmButton" Clicked="ConfirmButton_Clicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

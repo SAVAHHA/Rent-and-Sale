@@ -59,13 +59,13 @@ namespace SAVAHHArent.Pages
             //    passwordEntry.Text = "";
             //}
 
-            string myConnectionString = "Server=192.168.31.145;Port=3306;User Id=savahha;Password=1111;Database=rentandsale;OldGuids=True;Connection Timeout=200";
+            string myConnectionString = "Server=172.17.171.49;Port=3306;User Id=savahha;Password=1111;Database=rentandsale;OldGuids=True;Connection Timeout=200";
             MySqlConnection connection = new MySqlConnection(myConnectionString);
             connection.Open();
             MySqlCommand newCommand = new MySqlCommand("SELECT * FROM users WHERE Login=@login", connection);
             newCommand.Parameters.AddWithValue("@login", login);
             MySqlDataReader mySqlDataReader = newCommand.ExecuteReader();
-            await DisplayAlert("", "COOl", "OK");
+            //await DisplayAlert("", "COOl", "OK");
             if (mySqlDataReader.HasRows)
             {
                 while (mySqlDataReader.Read())

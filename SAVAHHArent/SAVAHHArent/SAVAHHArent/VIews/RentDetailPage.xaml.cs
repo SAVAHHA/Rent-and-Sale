@@ -26,7 +26,7 @@ namespace SAVAHHArent.VIews
             InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void RentButton_Clicked(object sender, EventArgs e)
         {
 
         }

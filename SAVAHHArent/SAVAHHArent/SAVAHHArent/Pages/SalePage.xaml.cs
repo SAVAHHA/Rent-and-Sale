@@ -25,5 +25,6 @@ namespace SAVAHHArent.Pages
             //await DisplayAlert("", carModel, "ok");
             await Shell.Current.GoToAsync($"saledetails?carmodel={carModel}");
         }
+
     }
 }

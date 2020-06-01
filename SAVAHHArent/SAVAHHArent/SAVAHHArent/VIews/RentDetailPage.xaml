@@ -21,7 +21,7 @@
 
             <Label x:Name="userNameLabel"></Label>
 
-            <Button Text="Rent" Margin="20" BackgroundColor="LightPink" Clicked="Button_Clicked"></Button>
+            <Button Text="Rent" Margin="20" BackgroundColor="LightPink" Clicked="RentButton_Clicked"></Button>
         </StackLayout>
 
 

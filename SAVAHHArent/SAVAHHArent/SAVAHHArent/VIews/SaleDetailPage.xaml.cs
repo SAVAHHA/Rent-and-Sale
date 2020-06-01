@@ -13,11 +13,17 @@ namespace SAVAHHArent.VIews
     [QueryProperty("CarModel", "carmodel")]
     public partial class SaleDetailPage : ContentPage
     {
+        public string _carModel { get; set; }
         public string CarModel
         {
             set
             {
                 BindingContext = CarData.Cars.FirstOrDefault(m => m.Model == Uri.UnescapeDataString(value));
+                _carModel = Uri.UnescapeDataString(value);
+            }
+            get
+            {
+                return _carModel;
             }
         }
 
@@ -26,9 +32,9 @@ namespace SAVAHHArent.VIews
             InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void BuyButton_Clicked(object sender, EventArgs e)
         {
-
+            await Shell.Current.GoToAsync($"confirmSalePage?carmodel={ModelLabel.Text}");
         }
 
         protected override void OnAppearing()

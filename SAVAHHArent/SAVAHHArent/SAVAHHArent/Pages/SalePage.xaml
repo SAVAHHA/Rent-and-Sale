@@ -41,4 +41,5 @@
                     SelectionMode="Single"
                     SelectionChanged="CollectionView_SelectionChanged"></CollectionView>
 
+   
 </ContentPage>
