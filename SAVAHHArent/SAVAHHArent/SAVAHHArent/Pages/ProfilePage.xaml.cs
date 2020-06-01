@@ -14,7 +14,8 @@ namespace SAVAHHArent.Pages
     //[QueryProperty("UserID", "userid")]
     public partial class ProfilePage : ContentPage
     {
-
+        public List<string> BoughtCars { get; set; }
+        public List<string> RentedCars { get; set; }
         //public string UserID
         //{
         //    set
@@ -26,11 +27,35 @@ namespace SAVAHHArent.Pages
         public ProfilePage()
         {
             InitializeComponent();
-
-            
+            BoughtCars = new List<string>();
+            RentedCars = new List<string>();
+            LoadData();
 
             //Alert();
             
+        }
+
+        public void LoadData()
+        {
+            //List<string> BoughtCars = new List<string>();
+            BoughtCars = new List<string>();
+            //string _login = loginEntry.Text;
+            string myConnectionString = "Server=172.17.171.49;Port=3306;User Id=savahha;Password=1111;Database=rentandsale;OldGuids=True;Connection Timeout=200";
+            MySqlConnection connection = new MySqlConnection(myConnectionString);
+            connection.Open();
+            MySqlCommand newCommand = new MySqlCommand("SELECT * FROM sales WHERE ID_User=@id", connection);
+            newCommand.Parameters.AddWithValue("@id", App.ID_inHost);
+            MySqlDataReader mySqlDataReader = newCommand.ExecuteReader();
+            if (mySqlDataReader.HasRows)
+            {
+                while (mySqlDataReader.Read())
+                {
+                    object carID = mySqlDataReader.GetValue(3);
+                    BoughtCars.Add(carID.ToString());
+                }
+            }
+            BoughtCarsListView.ItemsSource = BoughtCars;
+
         }
 
         public async void Alert()

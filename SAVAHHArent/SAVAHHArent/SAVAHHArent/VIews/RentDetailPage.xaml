@@ -10,7 +10,7 @@
             <StackLayout Orientation="Horizontal" Margin="10,20,10,0" Spacing="0">
                 <Label Text="{Binding CarMake}" FontSize="Medium" TextColor="Black"></Label>
                 <Label Text=" " FontSize="Medium" TextColor="Black"></Label>
-                <Label Text="{Binding Model}" FontSize="Medium" TextColor="Black"></Label>
+                <Label x:Name="ModelLabel" Text="{Binding Model}" FontSize="Medium" TextColor="Black"></Label>
                 <Label Text=", " FontSize="Medium" TextColor="Black"></Label>
                 <Label Text="{Binding Year}" FontSize="Medium" TextColor="Black"></Label>
             </StackLayout>

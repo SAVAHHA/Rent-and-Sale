@@ -27,6 +27,7 @@ namespace SAVAHHArent.VIews
                 return _carModel;
             }
         }
+
         public ConfirmSalePage()
         {
             InitializeComponent();

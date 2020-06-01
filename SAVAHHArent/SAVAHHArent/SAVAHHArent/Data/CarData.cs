@@ -19,7 +19,7 @@ namespace SAVAHHArent.Data
             string myConnectionString = "Server=172.17.171.49;Port=3306;User Id=savahha;Password=1111;Database=rentandsale;OldGuids=True;Connection Timeout=200";
             MySqlConnection connection = new MySqlConnection(myConnectionString);
             connection.Open();
-            MySqlCommand newCommand = new MySqlCommand("SELECT * FROM Cars", connection);
+            MySqlCommand newCommand = new MySqlCommand("SELECT * FROM Cars WHERE Bought=0", connection);
             MySqlDataReader mySqlDataReader = newCommand.ExecuteReader();
             if (mySqlDataReader.HasRows)
             {
@@ -33,10 +33,10 @@ namespace SAVAHHArent.Data
                     object _numberOfSeats = mySqlDataReader.GetValue(5);
                     object _horsepower = mySqlDataReader.GetValue(6);
                     object _cost = mySqlDataReader.GetValue(7);
-                    object _govNumber = mySqlDataReader.GetValue(8);
-                    object _rent = mySqlDataReader.GetValue(9);
-                    object _costPerDay = mySqlDataReader.GetValue(10);
-                    object _photo = mySqlDataReader.GetValue(11);
+                    object _govNumber = mySqlDataReader.GetValue(9);
+                    object _rent = mySqlDataReader.GetValue(10);
+                    object _costPerDay = mySqlDataReader.GetValue(11);
+                    object _photo = mySqlDataReader.GetValue(12);
 
 
 

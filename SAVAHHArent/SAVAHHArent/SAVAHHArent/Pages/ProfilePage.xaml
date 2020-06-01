@@ -20,7 +20,12 @@
 
             <Button x:Name="EditButton" Text="Edit" Clicked="EditButton_Clicked" Margin="20" BackgroundColor="LightPink"></Button>
 
-            <Button x:Name="LogOutButton" Text="Log out" Margin="20" VerticalOptions="End" BackgroundColor="RosyBrown" Clicked="LogOutButton_Clicked"></Button>
+            <Button x:Name="LogOutButton" Text="Log out" Margin="20" BackgroundColor="RosyBrown" Clicked="LogOutButton_Clicked"></Button>
+
+            <!--<Label Text="Rented Cars"></Label>
+            <ListView x:Name="RentedCarsListView"></ListView>-->
+            <Label Text="Bought Cars"></Label>
+            <ListView x:Name="BoughtCarsListView"></ListView>
         </StackLayout>
     </ScrollView>
 </ContentPage>

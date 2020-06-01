@@ -4,12 +4,16 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:SAVAHHArent"
              x:Class="SAVAHHArent.VIews.ConfirmRentPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="User: "></Label>
+                <Label Text="{x:Static local:App.Name}"></Label>
+            </StackLayout>
+
+            <DatePicker x:Name="RentSatrt"></DatePicker>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -26,9 +26,9 @@ namespace SAVAHHArent.VIews
             InitializeComponent();
         }
 
-        private void RentButton_Clicked(object sender, EventArgs e)
+        private async void RentButton_Clicked(object sender, EventArgs e)
         {
-
+            await Shell.Current.GoToAsync($"confirmRentPage?carmodel={ModelLabel.Text}");
         }
 
         protected override void OnAppearing()
