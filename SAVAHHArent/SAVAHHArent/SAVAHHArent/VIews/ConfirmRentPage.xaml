@@ -13,7 +13,49 @@
                 <Label Text="{x:Static local:App.Name}"></Label>
             </StackLayout>
 
-            <DatePicker x:Name="RentSatrt"></DatePicker>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding ID_Car}" x:Name="IdCarLabel"></Label>
+                <Label Text="{Binding CostPerDay}" x:Name="CostPerDayLabel"></Label>
+            </StackLayout>
+
+            <Label Text="Date of start"></Label>
+            <DatePicker x:Name="RentStartDatePicker"></DatePicker>
+
+            <Label Text="Date of end"></Label>
+            <DatePicker x:Name="RentEndDatePicker"></DatePicker>
+
+            <Label Text="Place start"></Label>
+            <!--<Entry x:Name="PlaceStartEntry"></Entry>-->
+            <Picker x:Name="PlaceStartPicker">
+                <Picker.Items>
+                    <x:String>-</x:String>
+                    <x:String>Из автоцентра</x:String>
+                    <x:String>Другой адрес (платно - 300)</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label Text="Place end"></Label>
+            <!--<Entry x:Name="PlaceEndEntry"></Entry>-->
+            <Picker x:Name="PlaceEndPicker">
+                <Picker.Items>
+                    <x:String>-</x:String>
+                    <x:String>В автоценрт</x:String>
+                    <x:String>Другой адрес (платно - 300)</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label Text="Choose insurance"></Label>
+            <Picker x:Name="InsurancePicker"></Picker>
+            
+
+            <Button Text="Рассчитать стоимость" x:Name="GetCostButton" Clicked="GetCostButton_Clicked"></Button>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Стоимость аренды: "></Label>
+                <Label x:Name="SumOfRentLabel"></Label>
+            </StackLayout>
+
+            <Button Text="Забронировать автомобиль" x:Name="ConfirmButton" Clicked="ConfirmButton_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
