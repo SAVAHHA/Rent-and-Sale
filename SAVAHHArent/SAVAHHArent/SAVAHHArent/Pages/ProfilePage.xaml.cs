@@ -35,6 +35,12 @@ namespace SAVAHHArent.Pages
             
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            LoadData();
+        }
+
         public void LoadData()
         {
             //List<string> BoughtCars = new List<string>();

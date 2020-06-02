@@ -36,13 +36,13 @@
 
     <TabBar>
         <Tab Title="Rent" Style="{StaticResource SavahhaShell}" Icon="ic_action_time_to_leave">
-            <ShellContent Title="Rent" ContentTemplate="{DataTemplate pages:RentPage}">
+            <ShellContent Title="Rent" Route="rent" ContentTemplate="{DataTemplate pages:RentPage}">
 
                 </ShellContent>
         </Tab>
 
         <Tab Title="Buy" Style="{StaticResource SavahhaShell}" Icon="ic_action_monetization_on">
-            <ShellContent Title="Rent" ContentTemplate="{DataTemplate pages:SalePage}">
+            <ShellContent Title="Rent" Route="sale" ContentTemplate="{DataTemplate pages:SalePage}">
 
             </ShellContent>
         </Tab>
