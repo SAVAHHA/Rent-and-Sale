@@ -4,28 +4,45 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:data="clr-namespace:SAVAHHArent.Pages"
              xmlns:local="clr-namespace:SAVAHHArent"
              x:Class="SAVAHHArent.Pages.ProfilePage">
 
-
-    <ScrollView>
-        <StackLayout Margin="20" x:Name="mainStackLayout">
-            <Label x:Name="nameLabel" Text="{x:Static local:App.Name}" 
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20" x:Name="mainStackLayout">
+                <Label x:Name="nameLabel" Text="{x:Static local:App.Name}" 
                    FontSize="Medium"
                    HorizontalOptions="Center" 
                     />
-            <!--<Label x:Name="idLabel" Text="{x:Static local:App.ID_inHost}" HorizontalOptions="Center"></Label>-->
-            <Entry x:Name="loginEntry" Margin="15,0,15,0" Text="{x:Static local:App.Login}" IsEnabled="False" TextColor="Black"></Entry>
-            <Entry x:Name="passwordEntry" Margin="15,10,15,0" Text="{x:Static local:App.Password}" IsEnabled="False"></Entry>
+                <!--<Label x:Name="idLabel" Text="{x:Static local:App.ID_inHost}" HorizontalOptions="Center"></Label>-->
+                <Entry x:Name="loginEntry" Margin="15,0,15,0" Text="{x:Static local:App.Login}" IsEnabled="False" TextColor="Black"></Entry>
+                <Entry x:Name="passwordEntry" IsPassword="True" Margin="15,10,15,0" Text="{x:Static local:App.Password}" IsEnabled="False"></Entry>
 
-            <Button x:Name="EditButton" Text="Edit" Clicked="EditButton_Clicked" Margin="20" BackgroundColor="LightPink"></Button>
+                <Button x:Name="EditButton" Text="Edit" Clicked="EditButton_Clicked" Margin="20" BackgroundColor="LightPink"></Button>
 
-            <Button x:Name="LogOutButton" Text="Log out" Margin="20" BackgroundColor="RosyBrown" Clicked="LogOutButton_Clicked"></Button>
+                <!--<Button x:Name="LogOutButton" Text="Log out" Margin="20" BackgroundColor="RosyBrown" Clicked="LogOutButton_Clicked"></Button>-->
 
-            <!--<Label Text="Rented Cars"></Label>
-            <ListView x:Name="RentedCarsListView"></ListView>-->
-            <Label Text="Bought Cars"></Label>
-            <ListView x:Name="BoughtCarsListView"></ListView>
-        </StackLayout>
-    </ScrollView>
+                <Label Text="Rented Cars"></Label>
+                <ScrollView BackgroundColor="LightGray" HeightRequest="100">
+                    <!--<ListView x:Name="RentedCarsListView"></ListView>-->
+                    <CollectionView Margin="20" x:Name="RentedCarsCollectionView"
+                                    ItemsSource="{x:Binding data:ProfilePage.RentedCars}"
+                                    ItemTemplate="{StaticResource CarTemplate}"
+                                    SelectionMode="Single"
+                                    IsEnabled="True"
+                                    SelectionChanged="RentedCarsCollectionView_SelectionChanged"></CollectionView>
+                </ScrollView>
+                
+                <Label Text="Bought Cars"></Label>
+                <ScrollView BackgroundColor="LightGray" HeightRequest="100">
+                    <ListView x:Name="BoughtCarsListView"></ListView>
+                </ScrollView>
+                
+
+                <Button x:Name="LogOutButton" Text="Log out" Margin="20" BackgroundColor="RosyBrown" Clicked="LogOutButton_Clicked"></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+    
 </ContentPage>

@@ -51,6 +51,7 @@ namespace SAVAHHArent
             routes.Add("profilePage", typeof(ProfilePage));
             routes.Add("confirmRentPage", typeof(ConfirmRentPage));
             routes.Add("confirmSalePage", typeof(ConfirmSalePage));
+            routes.Add("currentRentDetailPage", typeof(CurrentRentDetailPage));
 
             foreach (var item in routes)
             {

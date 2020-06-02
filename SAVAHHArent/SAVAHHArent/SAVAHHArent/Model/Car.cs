@@ -14,6 +14,7 @@ namespace SAVAHHArent.Model
         public int NumberOfSeats { get; set; }
         public int Horsepower { get; set; }
         public int Cost { get; set; }
+        public int Bought { get; set; }
         public string GovNumber { get; set; }
         public int Rent { get; set; }
         public int CostPerDay { get; set; }

@@ -7,28 +7,25 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SAVAHHArent.Model;
 
 namespace SAVAHHArent.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    //[QueryProperty("UserID", "userid")]
     public partial class ProfilePage : ContentPage
     {
-        public List<string> BoughtCars { get; set; }
-        public List<string> RentedCars { get; set; }
-        //public string UserID
-        //{
-        //    set
-        //    {
-        //        BindingContext = UserData.Users.FirstOrDefault(m => m.ID_User == Uri.UnescapeDataString(value));
-        //    }
-        //}
+        public List<Car> BoughtCars { get; set; }
+        public List<string> BoughtCarsString { get; set; }
+        public List<Car> RentedCars { get; set; }
+        public List<string> RentedCarsString { get; set; }
 
         public ProfilePage()
         {
             InitializeComponent();
-            BoughtCars = new List<string>();
-            RentedCars = new List<string>();
+            BoughtCars = new List<Car>();
+            BoughtCarsString = new List<string>();
+            RentedCars = new List<Car>();
+            RentedCarsString = new List<string>();
             LoadData();
 
             //Alert();
@@ -43,9 +40,8 @@ namespace SAVAHHArent.Pages
 
         public void LoadData()
         {
-            //List<string> BoughtCars = new List<string>();
-            BoughtCars = new List<string>();
-            //string _login = loginEntry.Text;
+            BoughtCars = new List<Car>();
+            BoughtCarsString = new List<string>();
             string myConnectionString = "Server=172.17.171.49;Port=3306;User Id=savahha;Password=1111;Database=rentandsale;OldGuids=True;Connection Timeout=200";
             MySqlConnection connection = new MySqlConnection(myConnectionString);
             connection.Open();
@@ -57,22 +53,57 @@ namespace SAVAHHArent.Pages
                 while (mySqlDataReader.Read())
                 {
                     object carID = mySqlDataReader.GetValue(3);
-                    BoughtCars.Add(carID.ToString());
+                    BoughtCarsString.Add(carID.ToString());
+                }
+            }
+            connection.Close();
+
+            foreach (var _id in BoughtCarsString)
+            {
+                var car = new Car();
+                foreach (var _checkCar in CarData.Cars)
+                {
+                    if (_checkCar.ID_Car.ToString() == _id)
+                    {
+                        car = _checkCar;
+                        BoughtCars.Add(car);
+                    }
                 }
             }
             BoughtCarsListView.ItemsSource = BoughtCars;
 
-        }
+            RentedCars = new List<Car>();
+            RentedCarsString = new List<string>();
+            string myConnectionString2 = "Server=172.17.171.49;Port=3306;User Id=savahha;Password=1111;Database=rentandsale;OldGuids=True;Connection Timeout=200";
+            MySqlConnection connection2 = new MySqlConnection(myConnectionString2);
+            connection2.Open();
+            MySqlCommand newCommand2 = new MySqlCommand("SELECT * FROM rents WHERE ID_User=@id", connection2);
+            newCommand2.Parameters.AddWithValue("@id", App.ID_inHost);
+            MySqlDataReader mySqlDataReader2 = newCommand2.ExecuteReader();
+            if (mySqlDataReader2.HasRows)
+            {
+                while (mySqlDataReader2.Read())
+                {
+                    object carID = mySqlDataReader2.GetValue(2);
+                    RentedCarsString.Add(carID.ToString());
+                }
+            }
+            connection2.Close();
 
-        public async void Alert()
-        {
-            await DisplayAlert("", "added", "yeah");
-        }
+            foreach (var _id in RentedCarsString)
+            {
+                var car = new Car();
+                foreach (var _checkCar in CarData.Cars)
+                {
+                    if (_checkCar.ID_Car.ToString() == _id)
+                    {
+                        car = _checkCar;
+                        RentedCars.Add(car);
+                    }
+                }
+            }
+            RentedCarsCollectionView.ItemsSource = RentedCars;
 
-        public async void R()
-        {
-            var longs = await App.Database.GetUsersAsync();
-            await DisplayAlert("", longs.Count().ToString(), "ok");
         }
 
         private void EditButton_Clicked(object sender, EventArgs e)
@@ -107,7 +138,6 @@ namespace SAVAHHArent.Pages
                 var newUser = new UserTable { Id_inHost = App.ID_inHost, Login = _login, Name = App.Name, Password = _password };
                 await App.Database.DeleteUserAsync(App.ID);
                 await App.Database.SaveUserAsync(newUser);
-                //App.Database.UpdateAsync()
                 await DisplayAlert("Ready", "Your profile was updated", "ok");
                 connection.Close();
             }
@@ -116,38 +146,6 @@ namespace SAVAHHArent.Pages
                 await DisplayAlert("No Internet connection", ex.InnerException?.Message, "ok");
 
             }
-
-            //foreach (var _user in UserData.Users)
-            //{
-            //    if (_user.ID_User.ToString() == idLabel.Text)
-            //    {
-            //        _user.Login = _login;
-            //        _user.Password = _password;
-
-
-            //        await App.Database.UpdateAsync(new UserTable { Id = App.ID, Login = _login, Password = _password });
-            //        //try
-            //        //{
-            //        //    string myConnectionString = "Server=www.db4free.net;Port=3306;User Id=anaisanais;Password=anais321;Database=rentsale;OldGuids=True";
-            //        //    MySqlConnection connection = new MySqlConnection(myConnectionString);
-            //        //    connection.Open();
-            //        //    MySqlCommand newCommand = new MySqlCommand("UPDATE Users SET Login=@login, Password=@password WHERE ID_User=@id ", connection);
-            //        //    newCommand.Parameters.AddWithValue("@login", _login);
-            //        //    newCommand.Parameters.AddWithValue("@password", _password);
-            //        //    newCommand.Parameters.AddWithValue("@id", idLabel.Text);
-            //        //    newCommand.ExecuteNonQuery();
-
-            //        //    connection.Close();
-            //        //}
-            //        //catch (Exception ex)
-            //        //{
-            //        //    await DisplayAlert("No Internet connection", ex.InnerException?.Message, "ok");
-            //        //}
-
-            //    }
-            //}
-
-            //App.Database.SaveItem(new UserTable { Id = 1, Login = loginEntry.Text, Password = passwordEntry.Text, Name = nameLabel.Text });
 
             Button button = (Button)sender;
             button.Text = "Saved!";
@@ -164,6 +162,12 @@ namespace SAVAHHArent.Pages
         {
             await App.Database.DeleteUserAsync(App.ID);
             App.Current.MainPage = new ShellPage();
+        }
+
+        private async void RentedCarsCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string carModel = (e.CurrentSelection.FirstOrDefault() as Car).Model;
+            await Shell.Current.GoToAsync($"currentRentDetailPage?carmodel={carModel}");
         }
     }
 }

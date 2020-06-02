@@ -4,11 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SAVAHHArent.Pages.MainPage">
-
-    <StackLayout VerticalOptions="Fill">
-        <Label Text="SAVAHHA rent" x:Name="WelcomeLabel" TextColor="DeepPink" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Medium"></Label>
-    </StackLayout>
-    
-    
+             x:Class="SAVAHHArent.VIews.CurrentRentDetailPage">
+    <ContentPage.Content>
+        <StackLayout>
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

@@ -39,7 +39,7 @@ namespace SAVAHHArent.VIews
 
         protected override void OnAppearing()
         {
-            R();
+            //R();
 
             //userNameLabel.Text = App.Database.GetItem(1).Name;
             base.OnAppearing();

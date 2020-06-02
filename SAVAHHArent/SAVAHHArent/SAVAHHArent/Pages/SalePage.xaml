@@ -31,12 +31,12 @@
         <controls:CarsSearchHandler Placeholder="Enter search term"
                                     ShowsResults="True"
                                     ItemTemplate="{StaticResource CarSearchTemplate}"
-                                    Cars="{x:Static data:CarData.Cars}"
+                                    Cars="{x:Static data:CarData.CarsForSale}"
                                     SelectedItemNavigationTarget="{x:Type views:SaleDetailPage}"></controls:CarsSearchHandler>
     </Shell.SearchHandler>
     
     <CollectionView Margin="20"
-                    ItemsSource="{x:Static data:CarData.Cars}"
+                    ItemsSource="{x:Static data:CarData.CarsForSale}"
                     ItemTemplate="{StaticResource CarTemplate}"
                     SelectionMode="Single"
                     SelectionChanged="CollectionView_SelectionChanged"></CollectionView>

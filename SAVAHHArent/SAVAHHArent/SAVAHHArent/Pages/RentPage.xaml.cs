@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SAVAHHArent.Data;
 using SAVAHHArent.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -23,6 +24,13 @@ namespace SAVAHHArent.Pages
             // This works because route names are unique in this application.
             //await DisplayAlert("", carModel, "ok");
             await Shell.Current.GoToAsync($"rentdetails?carmodel={carModel}");
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            //LoadData();
+            //CarData carData = new CarData()
         }
     }
 }

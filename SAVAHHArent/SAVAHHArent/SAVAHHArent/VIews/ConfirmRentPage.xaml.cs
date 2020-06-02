@@ -121,7 +121,17 @@ namespace SAVAHHArent.VIews
             await DisplayAlert("Ready", "You've bought the car", "OK");
             connection4.Close();
 
-            await Shell.Current.GoToAsync("///rent");
+            var car = new Car();
+            foreach (var _car in CarData.CarsForRent)
+            {
+                if (_car.ID_Car == CarID)
+                {
+                    car = _car;
+                }
+            }
+            CarData.CarsForRent.Remove(car);
+
+            App.Current.MainPage = new ShellPage();
         }
     }
 }
