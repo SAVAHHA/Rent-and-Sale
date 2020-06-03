@@ -4,8 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:view="clr-namespace:SAVAHHArent.Controls"
              xmlns:pages="clr-namespace:SAVAHHArent.Pages"
              x:Class="SAVAHHArent.VIews.SaleDetailPage">
+    <Shell.TitleView>
+        <view:BarView/>
+    </Shell.TitleView>
+    
     <ScrollView>
         <StackLayout>
             <StackLayout Orientation="Horizontal" Margin="10,20,10,0" Spacing="0">

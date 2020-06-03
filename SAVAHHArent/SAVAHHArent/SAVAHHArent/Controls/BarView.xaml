@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SAVAHHArent.Controls.BarView">
+    <ContentView.Content>
+        <StackLayout Spacing="0">
+            <Label Text="SAVAHHA" TextColor="Silver" HorizontalTextAlignment="End"
+                   FontSize="25" Margin="50, 0, 12, 0"
+                   />
+            <Label Text="RENT AND BUY" TextColor = "LightPink" HorizontalTextAlignment="End"
+                   FontSize="12" Margin="52, 0, 8, 8"
+                   />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -4,9 +4,14 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:view="clr-namespace:SAVAHHArent.Controls"
              xmlns:data="clr-namespace:SAVAHHArent.Pages"
              xmlns:local="clr-namespace:SAVAHHArent"
              x:Class="SAVAHHArent.Pages.ProfilePage">
+
+    <Shell.TitleView>
+        <view:BarView/>
+    </Shell.TitleView>
 
     <ContentPage.Content>
         <ScrollView>
@@ -23,7 +28,18 @@
 
                 <!--<Button x:Name="LogOutButton" Text="Log out" Margin="20" BackgroundColor="RosyBrown" Clicked="LogOutButton_Clicked"></Button>-->
 
-                <Label Text="Rented Cars"></Label>
+                <Label Text="Current Rents"></Label>
+                <ScrollView BackgroundColor="LightGray" HeightRequest="100">
+                    <!--<ListView x:Name="RentedCarsListView"></ListView>-->
+                    <CollectionView Margin="20" x:Name="CurrentRentCarsCollectionView"
+                                    ItemsSource="{x:Binding data:ProfilePage.CurrentRentCars}"
+                                    ItemTemplate="{StaticResource CarTemplate}"
+                                    SelectionMode="Single"
+                                    IsEnabled="True"
+                                    SelectionChanged="RentedCarsCollectionView_SelectionChanged"></CollectionView>
+                </ScrollView>
+
+                <Label Text="Previous Rented Cars"></Label>
                 <ScrollView BackgroundColor="LightGray" HeightRequest="100">
                     <!--<ListView x:Name="RentedCarsListView"></ListView>-->
                     <CollectionView Margin="20" x:Name="RentedCarsCollectionView"

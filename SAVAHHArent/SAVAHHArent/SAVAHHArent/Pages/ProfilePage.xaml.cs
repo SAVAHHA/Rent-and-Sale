@@ -18,6 +18,8 @@ namespace SAVAHHArent.Pages
         public List<string> BoughtCarsString { get; set; }
         public List<Car> RentedCars { get; set; }
         public List<string> RentedCarsString { get; set; }
+        public List<Car> CurrentRentCars { get; set; }
+        public List<string> CurrentRentCarsString { get; set; }
 
         public ProfilePage()
         {
@@ -74,6 +76,8 @@ namespace SAVAHHArent.Pages
 
             RentedCars = new List<Car>();
             RentedCarsString = new List<string>();
+            CurrentRentCars = new List<Car>();
+            CurrentRentCarsString = new List<string>();
             string myConnectionString2 = "Server=172.17.171.49;Port=3306;User Id=savahha;Password=1111;Database=rentandsale;OldGuids=True;Connection Timeout=200";
             MySqlConnection connection2 = new MySqlConnection(myConnectionString2);
             connection2.Open();
@@ -85,7 +89,15 @@ namespace SAVAHHArent.Pages
                 while (mySqlDataReader2.Read())
                 {
                     object carID = mySqlDataReader2.GetValue(2);
-                    RentedCarsString.Add(carID.ToString());
+                    object IDpayment = mySqlDataReader2.GetValue(17);
+                    if (Int32.Parse(IDpayment.ToString()) == 0)
+                    {
+                        CurrentRentCarsString.Add(carID.ToString());
+                    }
+                    else
+                    {
+                        RentedCarsString.Add(carID.ToString());
+                    }
                 }
             }
             connection2.Close();
@@ -103,6 +115,20 @@ namespace SAVAHHArent.Pages
                 }
             }
             RentedCarsCollectionView.ItemsSource = RentedCars;
+
+            foreach (var _id in CurrentRentCarsString)
+            {
+                var car = new Car();
+                foreach (var _checkCar in CarData.Cars)
+                {
+                    if (_checkCar.ID_Car.ToString() == _id)
+                    {
+                        car = _checkCar;
+                        CurrentRentCars.Add(car);
+                    }
+                }
+            }
+            CurrentRentCarsCollectionView.ItemsSource = CurrentRentCars;
 
         }
 
@@ -167,6 +193,7 @@ namespace SAVAHHArent.Pages
         private async void RentedCarsCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string carModel = (e.CurrentSelection.FirstOrDefault() as Car).Model;
+            await DisplayAlert(carModel, "", "op");
             await Shell.Current.GoToAsync($"currentRentDetailPage?carmodel={carModel}");
         }
     }

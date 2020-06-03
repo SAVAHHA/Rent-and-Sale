@@ -4,10 +4,31 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:view="clr-namespace:SAVAHHArent.Controls"
              x:Class="SAVAHHArent.VIews.CurrentRentDetailPage">
+    <Shell.TitleView>
+        <view:BarView/>
+    </Shell.TitleView>
+    
     <ContentPage.Content>
         <StackLayout>
-            
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Date Start"></Label>
+                <Label Text="{}"></Label>
+            </StackLayout>
+
+            <Label Text="{Binding ID_Car}" x:Name="IdCarLabel"></Label>
+            <Label Text="{Binding Model}" x:Name="ModelCarLabel"></Label>
+            <Label x:Name="idRentLabel"></Label>
+            <Label x:Name="testLabel"></Label>
+
+            <Button Text="End the session?" x:Name="endSessionButton" Clicked="endSessionButton_Clicked"></Button>
+
+            <Label Text="Sanctions"></Label>
+            <Label x:Name="sanctionsLabel"></Label>
+
+            <Label Text="Total cost"></Label>
+            <Label x:Name="totalCostLabel"></Label>
             
         </StackLayout>
     </ContentPage.Content>

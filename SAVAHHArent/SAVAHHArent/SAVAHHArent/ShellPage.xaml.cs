@@ -63,7 +63,7 @@ namespace SAVAHHArent
         {
             var users = App.Database.GetUsersAsync().Result;
 
-            await DisplayAlert(App.ID.ToString(), users.Count.ToString(), "ok");
+            await DisplayAlert(App.ID.ToString(), App.ID_inHost.ToString(), "ok");
         }
     }
 }
