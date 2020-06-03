@@ -50,7 +50,7 @@ namespace SAVAHHArent.VIews
             var DateEnd = RentEndDatePicker.Date;
 
             int numberOfDays = DateEnd.DayOfYear - DateStart.DayOfYear;
-            int SumForRent = numberOfDays * _costPerDay;
+            int SumForRent = (numberOfDays + 1) * _costPerDay;
             if (PlaceStartPicker.Items[PlaceStartPicker.SelectedIndex] != "Из автоцентра" & PlaceStartPicker.Items[PlaceStartPicker.SelectedIndex] != "-")
             {
                 SumForRent += 300;
@@ -72,7 +72,7 @@ namespace SAVAHHArent.VIews
         {
             int _costPerDay = Int32.Parse(CostPerDayLabel.Text);
             int numberOfDays = RentEndDatePicker.Date.DayOfYear - RentStartDatePicker.Date.DayOfYear;
-            int SumForRent = numberOfDays * _costPerDay;
+            int SumForRent = (numberOfDays + 1) * _costPerDay;
             int Cost = Int32.Parse(SumOfRentLabel.Text);
             int CarID = Int32.Parse(IdCarLabel.Text);
             int InsuranceID = InsurancePicker.SelectedIndex;

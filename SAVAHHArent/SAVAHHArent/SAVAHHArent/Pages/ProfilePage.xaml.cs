@@ -194,7 +194,9 @@ namespace SAVAHHArent.Pages
         {
             string carModel = (e.CurrentSelection.FirstOrDefault() as Car).Model;
             await DisplayAlert(carModel, "", "op");
-            await Shell.Current.GoToAsync($"currentRentDetailPage?carmodel={carModel}");
+            // await Shell.Current.GoToAsync($"currentRentDetailPage?carmodel={carModel}");
+
+            await Shell.Current.GoToAsync($"currentPage?carmodel={carModel}");
         }
     }
 }

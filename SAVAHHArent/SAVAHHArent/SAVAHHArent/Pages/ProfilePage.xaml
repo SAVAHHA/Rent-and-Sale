@@ -29,7 +29,7 @@
                 <!--<Button x:Name="LogOutButton" Text="Log out" Margin="20" BackgroundColor="RosyBrown" Clicked="LogOutButton_Clicked"></Button>-->
 
                 <Label Text="Current Rents"></Label>
-                <ScrollView BackgroundColor="LightGray" HeightRequest="100">
+                <ScrollView BackgroundColor="WhiteSmoke" HeightRequest="100">
                     <!--<ListView x:Name="RentedCarsListView"></ListView>-->
                     <CollectionView Margin="20" x:Name="CurrentRentCarsCollectionView"
                                     ItemsSource="{x:Binding data:ProfilePage.CurrentRentCars}"
@@ -40,7 +40,7 @@
                 </ScrollView>
 
                 <Label Text="Previous Rented Cars"></Label>
-                <ScrollView BackgroundColor="LightGray" HeightRequest="100">
+                <ScrollView BackgroundColor="WhiteSmoke" HeightRequest="100">
                     <!--<ListView x:Name="RentedCarsListView"></ListView>-->
                     <CollectionView Margin="20" x:Name="RentedCarsCollectionView"
                                     ItemsSource="{x:Binding data:ProfilePage.RentedCars}"
@@ -51,7 +51,7 @@
                 </ScrollView>
                 
                 <Label Text="Bought Cars"></Label>
-                <ScrollView BackgroundColor="LightGray" HeightRequest="100">
+                <ScrollView BackgroundColor="WhiteSmoke" HeightRequest="100">
                     <ListView x:Name="BoughtCarsListView"></ListView>
                 </ScrollView>
                 

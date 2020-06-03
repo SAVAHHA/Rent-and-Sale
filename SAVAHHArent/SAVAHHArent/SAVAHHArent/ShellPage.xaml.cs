@@ -26,7 +26,7 @@ namespace SAVAHHArent
             
             InitializeComponent();
             RegisterRoutes();
-            Welcome();
+           // Welcome();
             //profileTab.Content = new LoginPage();
             if (App.ID == 0)
             {
@@ -52,6 +52,7 @@ namespace SAVAHHArent
             routes.Add("confirmRentPage", typeof(ConfirmRentPage));
             routes.Add("confirmSalePage", typeof(ConfirmSalePage));
             routes.Add("currentRentDetailPage", typeof(CurrentRentDetailPage));
+            routes.Add("currentPage", typeof(CurrentPage));
 
             foreach (var item in routes)
             {

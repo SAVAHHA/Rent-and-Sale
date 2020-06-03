@@ -43,16 +43,16 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Frame BackgroundColor="White" BorderColor="Gray" HasShadow="True" CornerRadius="10" Margin="10" VerticalOptions="Fill" HorizontalOptions="Fill" Grid.Column="0" Grid.Row="0"></Frame>
+                <!--<Frame BackgroundColor="White" BorderColor="Gray" HasShadow="True" CornerRadius="10" Margin="10" VerticalOptions="Fill" HorizontalOptions="Fill" Grid.Column="0" Grid.Row="0"></Frame>-->
                 <Entry x:Name="loginEntry" Text="Login" Focused="loginEntry_Focused" VerticalOptions="Center" FontSize="15" TextColor="Gray" Margin="15,0,15,0" HorizontalOptions="Fill" Grid.Column="0" Grid.Row="0"></Entry>
 
-                <Frame BackgroundColor="White" BorderColor="Gray" HasShadow="True" CornerRadius="10" Margin="10" Grid.Column="0" Grid.Row="1"></Frame>
+                <!--<Frame BackgroundColor="White" BorderColor="Gray" HasShadow="True" CornerRadius="10" Margin="10" Grid.Column="0" Grid.Row="1"></Frame>-->
                 <Entry x:Name="passwordEntry"  Text="Password" TextColor="Gray" VerticalOptions="Center" FontSize="15" Focused="passwordEntry_Focused" Margin="15,0,15,0" HorizontalOptions="Fill" Grid.Column="0" Grid.Row="1"></Entry>
             </Grid>
 
-            <Button x:Name="LoginButton" Clicked="LoginButton_Clicked" BackgroundColor="White" BorderColor="#439aff" BorderWidth="1" TextColor="#439aff" Text="Войти" Margin="10" HorizontalOptions="Fill"></Button>
+            <Button x:Name="LoginButton" Clicked="LoginButton_Clicked" BackgroundColor="LightPink"  Text="Войти" Margin="10" HorizontalOptions="Fill"></Button>
 
-            <Button Text="Зарегистрироваться" x:Name="RegistrationButton" Clicked="registrationButton_Clicked" VerticalOptions="End" ></Button>
+            <Button Text="Зарегистрироваться" x:Name="RegistrationButton" BackgroundColor="LightPink" Margin="10" Clicked="registrationButton_Clicked" VerticalOptions="End" ></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

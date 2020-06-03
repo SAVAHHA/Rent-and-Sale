@@ -38,7 +38,7 @@ namespace SAVAHHArent.VIews
             set
             {
                 BindingContext = CarData.Cars.FirstOrDefault(m => m.Model == Uri.UnescapeDataString(value));
-                _carModel = CarData.Cars.FirstOrDefault(m => m.Model == Uri.UnescapeDataString(value)).Model;
+                _carModel = Uri.UnescapeDataString(value);
             }
             get
             {
@@ -46,18 +46,7 @@ namespace SAVAHHArent.VIews
             }
         }
 
-        public int _carID { get; set; }
-        public int CarID
-        {
-            set
-            {
-                _carID = CarData.Cars.FirstOrDefault(m => m.Model == CarModel).ID_Car;
-            }
-            get
-            {
-                return _carID;
-            }
-        }
+        public static int CarID { get; set; }
         public CurrentRentDetailPage()
         {
             InitializeComponent();
@@ -66,8 +55,9 @@ namespace SAVAHHArent.VIews
 
         public void LoadData()
         {
+            CarID = 1111;
             r();
-            testLabel.Text = CarID.ToString();
+            testLabel.Text = _carModel;
             string myConnectionString = "Server = 172.17.171.49; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
             MySqlConnection connection = new MySqlConnection(myConnectionString);
             connection.Open();
