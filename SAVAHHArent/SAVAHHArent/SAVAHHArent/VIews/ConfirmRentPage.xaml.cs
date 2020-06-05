@@ -98,7 +98,7 @@ namespace SAVAHHArent.VIews
             int Cost = CostEnd + CostStart + SumForRent;
             await DisplayAlert("Are you sure?", Cost.ToString(), "Ok");
             DateTime nowTime = DateTime.Now;
-            string myConnectionString3 = "Server = 172.17.171.49; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
+            string myConnectionString3 = "Server = 192.168.111.113; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
             MySqlConnection connection3 = new MySqlConnection(myConnectionString3);
             connection3.Open();
             MySqlCommand newCommand3 = new MySqlCommand("INSERT INTO Rents(ID_User,ID_Car,Place_start,Cost_of_delivery,Date_start,Date_end,Number_of_days,Cost_of_rent,Place_end,Cost_of_finish,ID_Insuarance) " +
@@ -117,7 +117,7 @@ namespace SAVAHHArent.VIews
             newCommand3.ExecuteNonQuery();
             connection3.Close();
 
-            string myConnectionString4 = "Server = 172.17.171.49; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
+            string myConnectionString4 = "Server = 192.168.111.113; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
             MySqlConnection connection4 = new MySqlConnection(myConnectionString4);
             connection4.Open();
             MySqlCommand newCommand4 = new MySqlCommand("UPDATE Cars SET Rent=2 WHERE ID_Car=@idCar", connection4);

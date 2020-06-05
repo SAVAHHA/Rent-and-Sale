@@ -70,7 +70,7 @@ namespace SAVAHHArent.VIews
             {
                 CurrentRent.SanctionsWereMade = 1;
                 sanctionsLabel.Text = SanctionData.Sanctions[0].Name;
-                string myConnectionString2 = "Server = 172.17.171.49; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
+                string myConnectionString2 = "Server = 192.168.111.113; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
                 MySqlConnection connection2 = new MySqlConnection(myConnectionString2);
                 connection2.Open();
                 MySqlCommand newCommand2 = new MySqlCommand("INSERT INTO rents_sanctions(ID_Rent,ID_Sanction) VALUES(@idRent, @idSanction)", connection2);
@@ -94,7 +94,7 @@ namespace SAVAHHArent.VIews
             bool result = await DisplayAlert("You need to pay", totalCostLabel.Text, "Yes", "No");
             if (result)
             {
-                string myConnectionString3 = "Server = 172.17.171.49; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
+                string myConnectionString3 = "Server = 192.168.111.113; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
                 MySqlConnection connection3 = new MySqlConnection(myConnectionString3);
                 connection3.Open();
                 MySqlCommand newCommand3 = new MySqlCommand("INSERT INTO Payments(Type_of_payment,Sum,ID_User,Date_of_payment) VALUES(@type,@sum,@id,@time)", connection3);
@@ -107,7 +107,7 @@ namespace SAVAHHArent.VIews
                 connection3.Close();
 
                 //int ID_Payment = 0;
-                string myConnectionString4 = "Server = 172.17.171.49; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
+                string myConnectionString4 = "Server = 192.168.111.113; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
                 MySqlConnection connection4 = new MySqlConnection(myConnectionString4);
                 connection4.Open();
                 MySqlCommand newCommand4 = new MySqlCommand("SELECT ID_Payment FROM Payments WHERE ID_User=@idUser and Date_of_payment=@nowTime", connection4);
@@ -126,7 +126,7 @@ namespace SAVAHHArent.VIews
                 connection4.Close();
 
 
-                string myConnectionString5 = "Server = 172.17.171.49; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
+                string myConnectionString5 = "Server = 192.168.111.113; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
                 MySqlConnection connection5 = new MySqlConnection(myConnectionString5);
                 connection5.Open();
                 MySqlCommand newCommand5 = new MySqlCommand("UPDATE rents SET ID_Payment=@idPayment WHERE ID_Rent=@idRent", connection5);
@@ -136,7 +136,7 @@ namespace SAVAHHArent.VIews
                 await DisplayAlert("Ready", "You've payed", "OK");
                 connection5.Close();
 
-                string myConnectionString6 = "Server = 172.17.171.49; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
+                string myConnectionString6 = "Server = 192.168.111.113; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
                 MySqlConnection connection6 = new MySqlConnection(myConnectionString6);
                 connection6.Open();
                 MySqlCommand newCommand6 = new MySqlCommand("UPDATE Cars SET Rent=1 WHERE ID_Car=@idCar", connection6);
