@@ -27,9 +27,19 @@
 
             <Image Source="{Binding Photo}" Aspect="AspectFill" ></Image>
 
-            <Label x:Name="userNameLabel"></Label>
+            <StackLayout Orientation="Horizontal" Margin="10">
+                <Label Text="Количество ЛС: " FontSize="Medium"></Label>
+                <Label Text="{Binding Horsepower}" TextColor="Black" FontSize="Medium"></Label>
+            </StackLayout>
 
-            <Button Text="Rent" Margin="20" BackgroundColor="LightPink" Clicked="RentButton_Clicked"></Button>
+            <StackLayout Orientation="Horizontal" Margin="10,0,10,0">
+                <Label Text="Количество мест: " FontSize="Medium"></Label>
+                <Label Text="{Binding NumberOfSeats}" TextColor="Black" FontSize="Medium"></Label>
+            </StackLayout>
+            
+            <!--<Label x:Name="userNameLabel"></Label>-->
+
+            <Button Text="Rent" Margin="20,10,20,10" BackgroundColor="LightPink" Clicked="RentButton_Clicked"></Button>
         </StackLayout>
 
 

@@ -25,6 +25,7 @@
                 <Entry x:Name="passwordEntry" IsPassword="True" Margin="15,10,15,0" Text="{x:Static local:App.Password}" IsEnabled="False"></Entry>
 
                 <Button x:Name="EditButton" Text="Edit" Clicked="EditButton_Clicked" Margin="20" BackgroundColor="LightPink"></Button>
+                <StackLayout x:Name="editStackLayout"></StackLayout>
 
                 <!--<Button x:Name="LogOutButton" Text="Log out" Margin="20" BackgroundColor="RosyBrown" Clicked="LogOutButton_Clicked"></Button>-->
 

@@ -12,21 +12,30 @@
     </Shell.TitleView>
     
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Buyer: "></Label>
-                <Label Text="{x:Static local:App.Name}"></Label>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Car: "></Label>
-                <Label Text="{Binding Model}"></Label>
-                <Label Text=" "></Label>
-                <Label Text="{Binding ID_Car}" x:Name="IdCarLabel"></Label>
-                <Label Text=" "></Label>
-                <Label Text="{Binding Cost}" x:Name="CostLabel"></Label>
-            </StackLayout>
+        <ScrollView>
+            <StackLayout Margin="10,10,10,0">
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <Label Text="Покупатель: " FontSize="Medium"></Label>
+                    <Label Text="{x:Static local:App.Name}" FontSize="Medium" TextColor="Black"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Модель автомобиля: " FontSize="Medium"></Label>
+                    <Label Text="{Binding Model}" FontSize="Medium"></Label>
+                </StackLayout>
 
-            <Button Text="Confirm" x:Name="ConfirmButton" BackgroundColor="LightPink" Clicked="ConfirmButton_Clicked"></Button>
-        </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="ID автомобиля: " FontSize="Medium"></Label>
+                    <Label Text="{Binding ID_Car}" FontSize="Medium" x:Name="IdCarLabel"></Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Цена автомобиля: " FontSize="Medium"></Label>
+                    <Label Text="{Binding Cost}" FontSize="Medium" x:Name="CostLabel"></Label>
+                </StackLayout>
+
+
+                <Button Text="Купить" FontSize="Medium" x:Name="ConfirmButton" BackgroundColor="LightPink" Margin="20" Clicked="ConfirmButton_Clicked"></Button>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -28,7 +28,7 @@
     </ContentPage.Resources>
     
     <Shell.SearchHandler>
-        <controls:CarsSearchHandler Placeholder="Enter search term"
+        <controls:CarsSearchHandler Placeholder="Поиск"
                                     ShowsResults="True"
                                     ItemTemplate="{StaticResource CarSearchTemplate}"
                                     Cars="{x:Static data:CarData.CarsForSale}"

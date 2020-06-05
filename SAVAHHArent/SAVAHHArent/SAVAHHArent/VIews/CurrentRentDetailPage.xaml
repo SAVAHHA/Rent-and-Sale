@@ -13,21 +13,33 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label Text="Date Start"></Label>
-                <Label Text="{}"></Label>
+                <Label Text="Дата начала: " FontSize="Medium"></Label>
+                <Label x:Name="dateStartLabel" FontSize="Medium" TextColor="Black"></Label>
             </StackLayout>
 
-            <Label Text="{Binding ID_Car}" x:Name="IdCarLabel"></Label>
-            <Label Text="{Binding Model}" x:Name="ModelCarLabel"></Label>
-            <Label x:Name="idRentLabel"></Label>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Дата окончания: " FontSize="Medium"></Label>
+                <Label x:Name="dateEndLabel" FontSize="Medium" TextColor="Black"></Label>
+            </StackLayout>
 
-            <Button Text="End the session?" x:Name="endSessionButton" Clicked="endSessionButton_Clicked"></Button>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="ID автомобиля: " FontSize="Medium"></Label>
+                <Label Text="{Binding ID_Car}" x:Name="IdCarLabel" FontSize="Medium" TextColor="Black"></Label>
+            </StackLayout>
 
-            <Label Text="Sanctions"></Label>
-            <Label x:Name="sanctionsLabel"></Label>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Модель автомобиля: " FontSize="Medium"></Label>
+                <Label Text="{Binding Model}" x:Name="ModelCarLabel" FontSize="Medium" TextColor="Black"></Label>
+            </StackLayout>
+            <!--<Label x:Name="idRentLabel"></Label>-->
 
-            <Label Text="Total cost"></Label>
-            <Label x:Name="totalCostLabel"></Label>
+            <Button Text="Завершить аренду?" FontSize="Medium" x:Name="endSessionButton" Clicked="endSessionButton_Clicked" BackgroundColor="RosyBrown" Margin="20"></Button>
+
+            <Label Text="Штрафы: " FontSize="Medium"></Label>
+            <Label x:Name="sanctionsLabel" FontSize="Medium" TextColor="Black"></Label>
+
+            <Label Text="Итоговая стоимость аренды: " FontSize="Medium"></Label>
+            <Label x:Name="totalCostLabel" FontSize="Medium" TextColor="Black"></Label>
             
         </StackLayout>
     </ContentPage.Content>

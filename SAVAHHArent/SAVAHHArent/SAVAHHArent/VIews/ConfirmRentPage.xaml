@@ -12,53 +12,60 @@
     </Shell.TitleView>
     
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="User: "></Label>
-                <Label Text="{x:Static local:App.Name}"></Label>
+        <ScrollView>
+            <StackLayout Margin="10,10,10,0">
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <Label Text="Пользователь: " FontSize="Medium"></Label>
+                    <Label Text="{x:Static local:App.Name}" FontSize="Medium" TextColor="Black"></Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <Label Text="ID автомобиля: " FontSize="Medium"></Label>
+                    <Label Text="{Binding ID_Car}" FontSize="Medium" x:Name="IdCarLabel" TextColor="Black"></Label>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <Label Text="Цена за день: " FontSize="Medium"></Label>
+                    <Label Text="{Binding CostPerDay}" FontSize="Medium" x:Name="CostPerDayLabel" TextColor="Black"></Label>
+                </StackLayout>
+                
+                <Label Text="Дата начала аренды" FontSize="Medium"></Label>
+                <DatePicker x:Name="RentStartDatePicker"></DatePicker>
+
+                <Label Text="Дата окончания аренды" FontSize="Medium"></Label>
+                <DatePicker x:Name="RentEndDatePicker"></DatePicker>
+
+                <Label Text="Выберете место начала аренды:" FontSize="Medium"></Label>
+                <!--<Entry x:Name="PlaceStartEntry"></Entry>-->
+                <Picker x:Name="PlaceStartPicker">
+                    <Picker.Items>
+                        <x:String>Из автоцентра</x:String>
+                        <x:String>Другой адрес (платно - 300)</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Text="Выберете место окончания аренды:" FontSize="Medium"></Label>
+                <!--<Entry x:Name="PlaceEndEntry"></Entry>-->
+                <Picker x:Name="PlaceEndPicker">
+                    <Picker.Items>
+                        <x:String>В автоценрт</x:String>
+                        <x:String>Другой адрес (платно - 300)</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Text="Выберете страховку:" FontSize="Medium"></Label>
+                <Picker x:Name="InsurancePicker"></Picker>
+
+
+                <Button Text="Рассчитать стоимость" Margin="20" BackgroundColor="LightPink" FontSize="Medium" x:Name="GetCostButton" Clicked="GetCostButton_Clicked"></Button>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Стоимость аренды: " FontSize="Medium"></Label>
+                    <Label x:Name="SumOfRentLabel" FontSize="Medium" TextColor="Black"></Label>
+                </StackLayout>
+
+                <Button Text="Забронировать автомобиль" TextColor="Black" Margin="20" BackgroundColor="LightPink" FontSize="Medium" x:Name="ConfirmButton" Clicked="ConfirmButton_Clicked"></Button>
             </StackLayout>
-
-            <StackLayout Orientation="Horizontal">
-                <Label Text="{Binding ID_Car}" x:Name="IdCarLabel"></Label>
-                <Label Text="{Binding CostPerDay}" x:Name="CostPerDayLabel"></Label>
-            </StackLayout>
-
-            <Label Text="Date of start"></Label>
-            <DatePicker x:Name="RentStartDatePicker"></DatePicker>
-
-            <Label Text="Date of end"></Label>
-            <DatePicker x:Name="RentEndDatePicker"></DatePicker>
-
-            <Label Text="Выберете место начала аренды"></Label>
-            <!--<Entry x:Name="PlaceStartEntry"></Entry>-->
-            <Picker x:Name="PlaceStartPicker">
-                <Picker.Items>
-                    <x:String>Из автоцентра</x:String>
-                    <x:String>Другой адрес (платно - 300)</x:String>
-                </Picker.Items>
-            </Picker>
-
-            <Label Text="Выберете место окончания аренды"></Label>
-            <!--<Entry x:Name="PlaceEndEntry"></Entry>-->
-            <Picker x:Name="PlaceEndPicker">
-                <Picker.Items>
-                    <x:String>В автоценрт</x:String>
-                    <x:String>Другой адрес (платно - 300)</x:String>
-                </Picker.Items>
-            </Picker>
-
-            <Label Text="Выберете страховку"></Label>
-            <Picker x:Name="InsurancePicker"></Picker>
-            
-
-            <Button Text="Рассчитать стоимость" x:Name="GetCostButton" Clicked="GetCostButton_Clicked"></Button>
-
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Стоимость аренды: "></Label>
-                <Label x:Name="SumOfRentLabel"></Label>
-            </StackLayout>
-
-            <Button Text="Забронировать автомобиль" x:Name="ConfirmButton" Clicked="ConfirmButton_Clicked"></Button>
-        </StackLayout>
+        </ScrollView>        
     </ContentPage.Content>
 </ContentPage>

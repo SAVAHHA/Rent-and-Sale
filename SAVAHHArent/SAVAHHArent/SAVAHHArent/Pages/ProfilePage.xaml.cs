@@ -140,7 +140,7 @@ namespace SAVAHHArent.Pages
             passwordEntry.IsEnabled = true;
 
             Button _button = new Button { Text = "Save", Margin = 15, BackgroundColor = Color.LightPink };
-            mainStackLayout.Children.Add(_button);
+            editStackLayout.Children.Add(_button);
             _button.Clicked += SaveButtonClicked;
             EditButton.IsEnabled = false;
         }

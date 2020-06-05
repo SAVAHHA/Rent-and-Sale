@@ -37,10 +37,12 @@ namespace SAVAHHArent.VIews
             CurrentRent = new Rent();
             InitializeComponent();
             GetRent();
-            idRentLabel.Text = CurrentRent.IDrent.ToString();
+            //idRentLabel.Text = CurrentRent.IDrent.ToString();
+            dateEndLabel.Text = CurrentRent.DateEnd.Date.ToString();
+            dateStartLabel.Text = CurrentRent.DateStart.Date.ToString();
         }
 
-        private async void GetRent()
+        private void GetRent()
         {
             CurrentRent = new Rent();
             foreach (var rent in RentData.CurrentRents)
@@ -90,8 +92,8 @@ namespace SAVAHHArent.VIews
             }
             totalCostLabel.Text = CurrentRent.TotalCost.ToString();
 
-            await Task.Delay(300);
-            bool result = await DisplayAlert("You need to pay", totalCostLabel.Text, "Yes", "No");
+            await Task.Delay(400);
+            bool result = await DisplayAlert("Необходимо заплатить: ", totalCostLabel.Text, "Да", "Нет");
             if (result)
             {
                 string myConnectionString3 = "Server = 192.168.111.113; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
@@ -103,7 +105,7 @@ namespace SAVAHHArent.VIews
                 newCommand3.Parameters.AddWithValue("@id", App.ID_inHost);
                 newCommand3.Parameters.AddWithValue("@time", nowDate);
                 newCommand3.ExecuteNonQuery();
-                await DisplayAlert("Ready", "You've payed", "OK");
+                await DisplayAlert("Внимание", "Вы оплатили аренду.", "OK");
                 connection3.Close();
 
                 //int ID_Payment = 0;
@@ -122,7 +124,7 @@ namespace SAVAHHArent.VIews
                         CurrentRent.IDpayment = Int32.Parse(idPayment.ToString());
                     }
                 }
-                await DisplayAlert(CurrentRent.IDpayment.ToString(), CurrentRent.IDrent.ToString(), "OK");
+                //await DisplayAlert(CurrentRent.IDpayment.ToString(), CurrentRent.IDrent.ToString(), "OK");
                 connection4.Close();
 
 
@@ -133,7 +135,7 @@ namespace SAVAHHArent.VIews
                 newCommand5.Parameters.AddWithValue("@idPayment", CurrentRent.IDpayment);
                 newCommand5.Parameters.AddWithValue("@idRent", CurrentRent.IDrent);
                 newCommand5.ExecuteNonQuery();
-                await DisplayAlert("Ready", "You've payed", "OK");
+                //await DisplayAlert("Ready", "You've payed", "OK");
                 connection5.Close();
 
                 string myConnectionString6 = "Server = 192.168.111.113; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";
@@ -142,12 +144,12 @@ namespace SAVAHHArent.VIews
                 MySqlCommand newCommand6 = new MySqlCommand("UPDATE Cars SET Rent=1 WHERE ID_Car=@idCar", connection6);
                 newCommand6.Parameters.AddWithValue("@idCar", App.CurrentCarID);
                 newCommand6.ExecuteNonQuery();
-                await DisplayAlert("Ready", "You've finished the rent", "OK");
+                await DisplayAlert("Готово", "Вы завершили аренду!", "OK");
                 connection6.Close();
 
 
                 App.Current.MainPage = new ShellPage();
-                await Shell.Current.GoToAsync("///profile");
+               // await Shell.Current.GoToAsync("///profile");
             }
         }
     }
