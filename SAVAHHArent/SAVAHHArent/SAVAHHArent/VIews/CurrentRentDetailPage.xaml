@@ -20,7 +20,6 @@
             <Label Text="{Binding ID_Car}" x:Name="IdCarLabel"></Label>
             <Label Text="{Binding Model}" x:Name="ModelCarLabel"></Label>
             <Label x:Name="idRentLabel"></Label>
-            <Label x:Name="testLabel"></Label>
 
             <Button Text="End the session?" x:Name="endSessionButton" Clicked="endSessionButton_Clicked"></Button>
 

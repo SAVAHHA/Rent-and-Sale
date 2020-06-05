@@ -24,7 +24,7 @@ namespace SAVAHHArent.Controls
             else
             {
                 ItemsSource = Cars
-                    .Where(car => car.Model.ToLower().Contains(newValue.ToLower()))
+                    .Where(car => car.Model.ToLower().Contains(newValue.ToLower()) | car.CarMake.ToLower().Contains(newValue.ToLower()))
                     .ToList<Car>();
 
             }

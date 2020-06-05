@@ -73,7 +73,7 @@ namespace SAVAHHArent.VIews
             int _costPerDay = Int32.Parse(CostPerDayLabel.Text);
             int numberOfDays = RentEndDatePicker.Date.DayOfYear - RentStartDatePicker.Date.DayOfYear;
             int SumForRent = (numberOfDays + 1) * _costPerDay;
-            int Cost = Int32.Parse(SumOfRentLabel.Text);
+            //int Cost = Int32.Parse(SumOfRentLabel.Text);
             int CarID = Int32.Parse(IdCarLabel.Text);
             int InsuranceID = InsurancePicker.SelectedIndex;
             string PlaceStart = PlaceStartPicker.Items[PlaceStartPicker.SelectedIndex];
@@ -90,7 +90,12 @@ namespace SAVAHHArent.VIews
             {
                 CostEnd += 300;
             }
+            if (InsurancePicker.Items[InsurancePicker.SelectedIndex] != "-")
+            {
+                SumForRent += Int32.Parse(InsurancePicker.Items[InsurancePicker.SelectedIndex].Split().Last());
+            }
 
+            int Cost = CostEnd + CostStart + SumForRent;
             await DisplayAlert("Are you sure?", Cost.ToString(), "Ok");
             DateTime nowTime = DateTime.Now;
             string myConnectionString3 = "Server = 172.17.171.49; Port = 3306; User Id = savahha; Password = 1111; Database = rentandsale; OldGuids = True; Connection Timeout = 200";

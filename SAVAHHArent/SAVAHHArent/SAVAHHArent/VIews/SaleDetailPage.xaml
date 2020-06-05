@@ -14,14 +14,18 @@
     <ScrollView>
         <StackLayout>
             <StackLayout Orientation="Horizontal" Margin="10,20,10,0" Spacing="0">
-                <Label Text="{Binding CarMake}" FontSize="Medium" TextColor="Black"></Label>
-                <Label Text=" " FontSize="Medium" TextColor="Black"></Label>
-                <Label x:Name="ModelLabel" Text="{Binding Model}" FontSize="Medium" TextColor="Black"></Label>
-                <Label Text=", " FontSize="Medium" TextColor="Black"></Label>
-                <Label Text="{Binding Year}" FontSize="Medium" TextColor="Black"></Label>
+                <Label Text="{Binding CarMake}" FontSize="Large" TextColor="Black"></Label>
+                <Label Text=" " FontSize="Large" TextColor="Black"></Label>
+                <Label x:Name="ModelLabel" Text="{Binding Model}" FontSize="Large" TextColor="Black"></Label>
+                <Label Text=", " FontSize="Large" TextColor="Black"></Label>
+                <Label Text="{Binding Year}" FontSize="Large" TextColor="Black"></Label>
             </StackLayout>
 
-            <Label Text="{Binding Cost}" FontAttributes="Bold" TextColor="Black" FontSize="Large" Margin="10"></Label>
+            <StackLayout Orientation="Horizontal" Margin="0,0,0,0" Spacing="0">
+                <Label Text="Цена: " TextColor="Black" FontSize="Medium" Margin="10,10,0,10"></Label>
+                <Label Text="{Binding Cost}" FontAttributes="Bold" TextColor="Black" FontSize="Medium" Margin="0,10,10,10"></Label>
+            </StackLayout>
+            <!--<Label Text="{Binding Cost}" FontAttributes="Bold" TextColor="Black" FontSize="Medium" Margin="10"></Label>-->
 
             <Image Source="{Binding Photo}" Aspect="AspectFill"></Image>
 

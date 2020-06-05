@@ -8,8 +8,25 @@
              xmlns:controls="clr-namespace:SAVAHHArent.Controls"
              xmlns:data="clr-namespace:SAVAHHArent.Data"
              x:Class="SAVAHHArent.Pages.RentPage">
-    
-    
+
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="#c0978d" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
     <Shell.SearchHandler>
         <controls:CarsSearchHandler Placeholder="Enter search term"
                                     ShowsResults="True"
@@ -18,7 +35,7 @@
                                     SelectedItemNavigationTarget="{x:Type views:SaleDetailPage}"></controls:CarsSearchHandler>
     </Shell.SearchHandler>
 
-    <CollectionView Margin="20"
+    <CollectionView Margin="0,10,0,0"
                     ItemsSource="{x:Static data:CarData.CarsForRent}"
                     ItemTemplate="{StaticResource CarTemplate}"
                     SelectionMode="Single"

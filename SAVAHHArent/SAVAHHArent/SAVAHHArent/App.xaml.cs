@@ -90,6 +90,8 @@ namespace SAVAHHArent
             }
         }
 
+        public static int CurrentCarID { get; set; }
+
         public static string Password
         {
             get

@@ -46,13 +46,18 @@
                                     ItemsSource="{x:Binding data:ProfilePage.RentedCars}"
                                     ItemTemplate="{StaticResource CarTemplate}"
                                     SelectionMode="Single"
-                                    IsEnabled="True"
-                                    SelectionChanged="RentedCarsCollectionView_SelectionChanged"></CollectionView>
+                                    IsEnabled="False"></CollectionView>
                 </ScrollView>
                 
                 <Label Text="Bought Cars"></Label>
                 <ScrollView BackgroundColor="WhiteSmoke" HeightRequest="100">
-                    <ListView x:Name="BoughtCarsListView"></ListView>
+                    <!--<ListView x:Name="BoughtCarsListView"></ListView>-->
+                    <CollectionView Margin="20" x:Name="BoughtCarsCollectionView"
+                                    ItemsSource="{x:Binding data:ProfilePage.BoughtCars}"
+                                    ItemTemplate="{StaticResource CarTemplate}"
+                                    SelectionMode="Single"
+                                    IsEnabled="False"
+                                    ></CollectionView>
                 </ScrollView>
                 
 

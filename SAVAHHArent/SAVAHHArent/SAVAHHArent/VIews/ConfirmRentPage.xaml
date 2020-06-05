@@ -29,27 +29,25 @@
             <Label Text="Date of end"></Label>
             <DatePicker x:Name="RentEndDatePicker"></DatePicker>
 
-            <Label Text="Place start"></Label>
+            <Label Text="Выберете место начала аренды"></Label>
             <!--<Entry x:Name="PlaceStartEntry"></Entry>-->
             <Picker x:Name="PlaceStartPicker">
                 <Picker.Items>
-                    <x:String>-</x:String>
                     <x:String>Из автоцентра</x:String>
                     <x:String>Другой адрес (платно - 300)</x:String>
                 </Picker.Items>
             </Picker>
 
-            <Label Text="Place end"></Label>
+            <Label Text="Выберете место окончания аренды"></Label>
             <!--<Entry x:Name="PlaceEndEntry"></Entry>-->
             <Picker x:Name="PlaceEndPicker">
                 <Picker.Items>
-                    <x:String>-</x:String>
                     <x:String>В автоценрт</x:String>
                     <x:String>Другой адрес (платно - 300)</x:String>
                 </Picker.Items>
             </Picker>
 
-            <Label Text="Choose insurance"></Label>
+            <Label Text="Выберете страховку"></Label>
             <Picker x:Name="InsurancePicker"></Picker>
             
 

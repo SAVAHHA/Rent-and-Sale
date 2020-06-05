@@ -72,7 +72,7 @@ namespace SAVAHHArent.Pages
                     }
                 }
             }
-            BoughtCarsListView.ItemsSource = BoughtCars;
+            BoughtCarsCollectionView.ItemsSource = BoughtCars;
 
             RentedCars = new List<Car>();
             RentedCarsString = new List<string>();
@@ -192,11 +192,10 @@ namespace SAVAHHArent.Pages
 
         private async void RentedCarsCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string carModel = (e.CurrentSelection.FirstOrDefault() as Car).Model;
-            await DisplayAlert(carModel, "", "op");
-            // await Shell.Current.GoToAsync($"currentRentDetailPage?carmodel={carModel}");
-
-            await Shell.Current.GoToAsync($"currentPage?carmodel={carModel}");
+            string carId = (e.CurrentSelection.FirstOrDefault() as Car).ID_Car.ToString();
+            App.CurrentCarID = Int32.Parse(carId);
+            await DisplayAlert(carId, "", "op");
+            await Shell.Current.GoToAsync($"currentRentDetailPage?carid={carId}");
         }
     }
 }
