@@ -88,6 +88,8 @@ namespace SAVAHHArent.VIews
             await DisplayAlert("Ready", "You've bought the car", "OK");
             connection4.Close();
 
+
+            App.Current.MainPage = new ShellPage();
             await Shell.Current.GoToAsync("///sale");
         }
     }

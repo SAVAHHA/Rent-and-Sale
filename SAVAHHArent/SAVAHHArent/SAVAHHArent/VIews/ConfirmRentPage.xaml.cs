@@ -123,7 +123,7 @@ namespace SAVAHHArent.VIews
             MySqlCommand newCommand4 = new MySqlCommand("UPDATE Cars SET Rent=2 WHERE ID_Car=@idCar", connection4);
             newCommand4.Parameters.AddWithValue("@idCar", IdCarLabel.Text);
             newCommand4.ExecuteNonQuery();
-            await DisplayAlert("Ready", "You've bought the car", "OK");
+            await DisplayAlert("Ready", "You've rented the car", "OK");
             connection4.Close();
 
             var car = new Car();

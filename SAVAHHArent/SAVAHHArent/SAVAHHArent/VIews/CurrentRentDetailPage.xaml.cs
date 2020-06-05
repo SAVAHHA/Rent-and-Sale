@@ -40,7 +40,7 @@ namespace SAVAHHArent.VIews
             idRentLabel.Text = CurrentRent.IDrent.ToString();
         }
 
-        private void GetRent()
+        private async void GetRent()
         {
             CurrentRent = new Rent();
             foreach (var rent in RentData.CurrentRents)
@@ -75,13 +75,19 @@ namespace SAVAHHArent.VIews
                 connection2.Open();
                 MySqlCommand newCommand2 = new MySqlCommand("INSERT INTO rents_sanctions(ID_Rent,ID_Sanction) VALUES(@idRent, @idSanction)", connection2);
                 newCommand2.Parameters.AddWithValue("@idRent", CurrentRent.IDrent);
-                newCommand2.Parameters.AddWithValue("@idSanction", 1);
+                newCommand2.Parameters.AddWithValue("@idSanction", SanctionData.Sanctions[0].ID_Sanction);
                 newCommand2.ExecuteNonQuery();
                 connection2.Close();
                 CurrentRent.TotalCost += SanctionData.Sanctions[0].Cost;
             }
-
-            CurrentRent.TotalCost += CurrentRent.CostOfDelivery + CurrentRent.CostOfFinish + CurrentRent.CostOfRent + InsuranceData.Insurances[CurrentRent.IDinsurance].Cost;
+            if (CurrentRent.IDinsurance != 0)
+            {
+                CurrentRent.TotalCost += CurrentRent.CostOfDelivery + CurrentRent.CostOfFinish + CurrentRent.CostOfRent + InsuranceData.Insurances[CurrentRent.IDinsurance - 1].Cost;
+            }
+            else
+            {
+                CurrentRent.TotalCost += CurrentRent.CostOfDelivery + CurrentRent.CostOfFinish + CurrentRent.CostOfRent;
+            }
             totalCostLabel.Text = CurrentRent.TotalCost.ToString();
 
             await Task.Delay(300);
@@ -139,6 +145,8 @@ namespace SAVAHHArent.VIews
                 await DisplayAlert("Ready", "You've finished the rent", "OK");
                 connection6.Close();
 
+
+                App.Current.MainPage = new ShellPage();
                 await Shell.Current.GoToAsync("///profile");
             }
         }
