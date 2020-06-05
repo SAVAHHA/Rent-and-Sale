@@ -194,7 +194,6 @@ namespace SAVAHHArent.Pages
         {
             string carId = (e.CurrentSelection.FirstOrDefault() as Car).ID_Car.ToString();
             App.CurrentCarID = Int32.Parse(carId);
-            await DisplayAlert(carId, "", "op");
             await Shell.Current.GoToAsync($"currentRentDetailPage?carid={carId}");
         }
     }
